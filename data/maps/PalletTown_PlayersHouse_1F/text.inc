@@ -1,3 +1,7 @@
+PalletTown_PlayersHouse_1F_Text_Nick::
+    .string "NICK: Hey, {PLAYER}.\n"
+    .string "It's me, NICK.$"
+
 PalletTown_PlayersHouse_1F_Text_AllBoysLeaveOakLookingForYou::
     .string "MOM: …Right.\n"
     .string "All boys leave home someday.\l"

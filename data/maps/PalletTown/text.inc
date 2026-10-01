@@ -30,7 +30,7 @@ PalletTown_Text_RivalsHouse::
     .string "{RIVAL}'s house$"
 
 PalletTown_Text_TownSign::
-    .string "PALLET TOWN\n"
+    .string "WEST SPRINGFIELD\n"
     .string "Shades of your journey await!$"
 
 PalletTown_Text_OakLetMeSeePokedex::

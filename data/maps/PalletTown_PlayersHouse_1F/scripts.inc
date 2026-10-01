@@ -22,6 +22,14 @@ PalletTown_PlayersHouse_1F_EventScript_MomOakLookingForYouFemale::
 	msgbox PalletTown_PlayersHouse_1F_Text_AllGirlsLeaveOakLookingForYou
 	return
 
+PalletTown_PlayersHouse_1F_EventScript_Nick::
+	lock
+	faceplayer
+	msgbox PalletTown_PlayersHouse_1F_Text_Nick
+	closemessage
+	release
+	end
+
 PalletTown_PlayersHouse_1F_EventScript_MomHeal::
 	msgbox PalletTown_PlayersHouse_1F_Text_YouShouldTakeQuickRest
 	closemessage

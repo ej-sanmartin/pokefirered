@@ -594,6 +594,7 @@ static const u8 *const sMaleNameChoices[] =
     gNameChoice_Kene,
     gNameChoice_Geki,
 #elif defined(LEAFGREEN)
+    gNameChoice_Landon,
     gNameChoice_Green,
     gNameChoice_Leaf,
     gNameChoice_Gary,
@@ -2131,7 +2132,9 @@ static void PrintNameChoiceOptions(u8 taskId, u8 hasPlayerBeenNamed)
         textPtrs = sRivalNameChoices;
     for (i = 0; i < ARRAY_COUNT(sRivalNameChoices); i++)
         AddTextPrinterParameterized(tMenuWindowId, FONT_NORMAL, textPtrs[i], 8, 16 * (i + 1) + 1, 0, NULL);
-    Menu_InitCursor(tMenuWindowId, FONT_NORMAL, 0, 1, 16, 5, 0);
+    /* Highlight the first preset. On LeafGreen that is Landon. */
+    Menu_InitCursor(tMenuWindowId, FONT_NORMAL, 0, 1, 16, 5,
+                    hasPlayerBeenNamed == FALSE ? 1 : 0);
     CopyWindowToVram(tMenuWindowId, COPYWIN_FULL);
 }
 
@@ -2142,10 +2145,11 @@ static void GetDefaultName(u8 hasPlayerBeenNamed, u8 rivalNameChoice)
     u8 i;
     if (hasPlayerBeenNamed == FALSE)
     {
+        /* Use the row the player picked. NEW NAME prefills row 0. */
         if (gSaveBlock2Ptr->playerGender == MALE)
-            src = sMaleNameChoices[Random() % ARRAY_COUNT(sMaleNameChoices)];
+            src = sMaleNameChoices[rivalNameChoice];
         else
-            src = sFemaleNameChoices[Random() % ARRAY_COUNT(sFemaleNameChoices)];
+            src = sFemaleNameChoices[rivalNameChoice];
         dest = gSaveBlock2Ptr->playerName;
     }
     else

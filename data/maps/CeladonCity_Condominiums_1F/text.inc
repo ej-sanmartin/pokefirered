@@ -19,9 +19,9 @@ CeladonCity_Condominiums_1F_Text_DaisyComesToBuyTea::
     .string "Oh, hello, dearie.\n"
     .string "Did you enjoy my TEA?\p"
     .string "By the way, dear. Are you, by any\n"
-    .string "chance, from PALLET TOWN?\p"
-    .string "A girl from PALLET TOWN, DAISY,\n"
-    .string "she enjoys TEA every day.\p"
+    .string "chance, from WEST SPRINGFIELD?\p"
+    .string "A girl from WEST SPRINGFIELD,\n"
+    .string "DAISY, she enjoys TEA every day.\p"
     .string "She visits the CELADON DEPT. STORE\n"
     .string "to buy some TEA.$"
 
