@@ -653,10 +653,10 @@ static const u8 *const sRivalNameChoices[] =
     gNameChoice_Kaz,
     gNameChoice_Toru
 #elif defined(LEAFGREEN)
+    gNameChoice_Tato,
     gNameChoice_Red,
     gNameChoice_Ash,
-    gNameChoice_Kene,
-    gNameChoice_Geki
+    gNameChoice_Kene
 #endif
 };
 
@@ -2132,9 +2132,8 @@ static void PrintNameChoiceOptions(u8 taskId, u8 hasPlayerBeenNamed)
         textPtrs = sRivalNameChoices;
     for (i = 0; i < ARRAY_COUNT(sRivalNameChoices); i++)
         AddTextPrinterParameterized(tMenuWindowId, FONT_NORMAL, textPtrs[i], 8, 16 * (i + 1) + 1, 0, NULL);
-    /* Highlight the first preset. On LeafGreen that is Landon. */
-    Menu_InitCursor(tMenuWindowId, FONT_NORMAL, 0, 1, 16, 5,
-                    hasPlayerBeenNamed == FALSE ? 1 : 0);
+    /* Highlight the first preset: Landon for the player, Tato for the rival. */
+    Menu_InitCursor(tMenuWindowId, FONT_NORMAL, 0, 1, 16, 5, 1);
     CopyWindowToVram(tMenuWindowId, COPYWIN_FULL);
 }
 
