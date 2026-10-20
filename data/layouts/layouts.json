@@ -4398,6 +4398,18 @@
       "secondary_tileset": "gTileset_MtEmber",
       "border_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa/border.bin",
       "blockdata_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa/map.bin"
+    },
+    {
+      "id": "LAYOUT_FARAWAY_REAL",
+      "name": "FarawayReal_Layout",
+      "width": 29,
+      "height": 26,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_FarawayRealPrimary",
+      "secondary_tileset": "gTileset_FarawayReal",
+      "border_filepath": "data/layouts/FarawayReal/border.bin",
+      "blockdata_filepath": "data/layouts/FarawayReal/map.bin"
     }
   ]
 }

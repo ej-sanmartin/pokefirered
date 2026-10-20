@@ -457,4 +457,8 @@ gSpecials::
 	def_special HasTradeEvolvableMon
 	def_special CanSelectedMonTradeEvolve
 	def_special StartSelectedMonTradeEvolution
+	def_special HasKantoDexWithoutTrades
+.ifdef DEBUG_SHORTCUT
+	def_special DebugCompleteKantoDex
+.endif
 gSpecialsEnd::

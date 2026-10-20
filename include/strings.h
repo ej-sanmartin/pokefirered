@@ -796,6 +796,7 @@ extern const u8 gText_1BigMushroom[];
 extern const u8 gText_SeviiIslands[];
 extern const u8 gText_NavelRock[];
 extern const u8 gText_BirthIsland[];
+extern const u8 gText_FarawayIsland[];
 extern const u8 gText_MiracleSeed_1000Coins[];
 extern const u8 gText_Charcoal_1000Coins[];
 extern const u8 gText_MysticWater_1000Coins[];

@@ -120,6 +120,38 @@ bool16 HasAllKantoMons(void)
     return TRUE;
 }
 
+// Mod: Kanto Pokedex (without Mew) counts as complete when only one of
+// Hitmonlee/Hitmonchan is caught, since the other one needs a trade.
+// Returns TRUE if complete.
+bool16 HasKantoDexWithoutTrades(void)
+{
+    u16 i;
+
+    for (i = 0; i < KANTO_DEX_COUNT - 1; i++)
+    {
+        if (i + 1 == NATIONAL_DEX_HITMONLEE || i + 1 == NATIONAL_DEX_HITMONCHAN)
+            continue;
+        if (!GetSetPokedexFlag(i + 1, FLAG_GET_CAUGHT))
+            return FALSE;
+    }
+    return GetSetPokedexFlag(NATIONAL_DEX_HITMONLEE, FLAG_GET_CAUGHT)
+        || GetSetPokedexFlag(NATIONAL_DEX_HITMONCHAN, FLAG_GET_CAUGHT);
+}
+
+#ifdef DEBUG_SHORTCUT
+// Test builds only: marks the whole Kanto Pokedex (except Mew) as caught.
+void DebugCompleteKantoDex(void)
+{
+    u16 i;
+
+    for (i = 1; i < KANTO_DEX_COUNT; i++)
+    {
+        GetSetPokedexFlag(i, FLAG_SET_SEEN);
+        GetSetPokedexFlag(i, FLAG_SET_CAUGHT);
+    }
+}
+#endif
+
 bool16 HasAllMons(void)
 {
     u16 i;

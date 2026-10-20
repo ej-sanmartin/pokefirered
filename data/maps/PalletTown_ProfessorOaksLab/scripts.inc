@@ -567,6 +567,11 @@ PalletTown_ProfessorOaksLab_EventScript_RivalChoseStarter::
 PalletTown_ProfessorOaksLab_EventScript_ProfOak::
 	lock
 	faceplayer
+	@ Mod: complete Kanto POKeDEX -> Oak tells the Mew story, gives the OLD SEA MAP
+	goto_if_set FLAG_OAK_GAVE_OLD_SEA_MAP, PalletTown_ProfessorOaksLab_EventScript_ProfOakNormal
+	specialvar VAR_RESULT, HasKantoDexWithoutTrades
+	goto_if_eq VAR_RESULT, TRUE, PalletTown_ProfessorOaksLab_EventScript_OakOldSeaMap
+PalletTown_ProfessorOaksLab_EventScript_ProfOakNormal::
 	goto_if_set SHOWED_OAK_COMPLETE_DEX, PalletTown_ProfessorOaksLab_EventScript_OakJustShownCompleteDex
 	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 9, PalletTown_ProfessorOaksLab_EventScript_RatePokedex
 	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 8, PalletTown_ProfessorOaksLab_EventScript_MonsAroundWorldWait
@@ -577,6 +582,24 @@ PalletTown_ProfessorOaksLab_EventScript_ProfOak::
 	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 4, PalletTown_ProfessorOaksLab_EventScript_OakBattleMonForItToGrow
 	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 3, PalletTown_ProfessorOaksLab_EventScript_OakCanReachNextTownWithMon
 	msgbox PalletTown_ProfessorOaksLab_Text_OakWhichOneWillYouChoose
+	release
+	end
+
+PalletTown_ProfessorOaksLab_EventScript_OakOldSeaMap::
+	msgbox PalletTown_ProfessorOaksLab_Text_OakKantoDexDone
+	msgbox PalletTown_ProfessorOaksLab_Text_OakMewStory
+	checkitemspace ITEM_OLD_SEA_MAP
+	goto_if_eq VAR_RESULT, FALSE, PalletTown_ProfessorOaksLab_EventScript_OakNoRoomForMap
+	msgbox PalletTown_ProfessorOaksLab_Text_OakTrustYou
+	setflag FLAG_OAK_GAVE_OLD_SEA_MAP
+	setflag FLAG_ENABLE_SHIP_FARAWAY_ISLAND
+	giveitem_msg PalletTown_ProfessorOaksLab_Text_ReceivedOldSeaMap, ITEM_OLD_SEA_MAP, 1, MUS_OBTAIN_KEY_ITEM
+	msgbox PalletTown_ProfessorOaksLab_Text_OakMewGoodLuck
+	release
+	end
+
+PalletTown_ProfessorOaksLab_EventScript_OakNoRoomForMap::
+	msgbox PalletTown_ProfessorOaksLab_Text_OakMakeRoomForMap
 	release
 	end
 

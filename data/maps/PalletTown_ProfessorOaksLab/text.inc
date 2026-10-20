@@ -253,6 +253,59 @@ PalletTown_ProfessorOaksLab_Text_OakTakeLastMonAsPrize::
     .string "a prize for your accomplishment.\p"
     .string "Will you take it?$"
 
+PalletTown_ProfessorOaksLab_Text_OakKantoDexDone::
+    .string "OAK: {PLAYER}!\n"
+    .string "I have been studying your\l"
+    .string "POKéDEX. Remarkable work!\p"
+    .string "You have recorded nearly every\n"
+    .string "POKéMON in the KANTO region.\p"
+    .string "I have waited a long time for\n"
+    .string "a trainer like you.$"
+
+PalletTown_ProfessorOaksLab_Text_OakMewStory::
+    .string "Listen closely, {PLAYER}.\p"
+    .string "Years ago, a scholar returned\n"
+    .string "from a jungle with a tale.\p"
+    .string "He had glimpsed a tiny, rosy\n"
+    .string "POKéMON that no one had ever\l"
+    .string "recorded.\p"
+    .string "They say it holds the genetic\n"
+    .string "code of every POKéMON.\p"
+    .string "Its name is MEW.\p"
+    .string "It is shy and quick, and it\n"
+    .string "vanishes whenever it is seen.\p"
+    .string "Recently I traced reports of it\n"
+    .string "to an island far across the sea,\l"
+    .string "off every known route.$"
+
+PalletTown_ProfessorOaksLab_Text_OakTrustYou::
+    .string "I would never share this secret\n"
+    .string "with just anyone.\p"
+    .string "But your skill and dedication\n"
+    .string "have earned my trust.\p"
+    .string "I have chartered a boat at\n"
+    .string "VERMILION CITY for you.\p"
+    .string "Take this OLD SEA MAP and show\n"
+    .string "it to the sailor there.$"
+
+PalletTown_ProfessorOaksLab_Text_ReceivedOldSeaMap::
+    .string "{PLAYER} received the\n"
+    .string "OLD SEA MAP!$"
+
+PalletTown_ProfessorOaksLab_Text_OakMewGoodLuck::
+    .string "The island is called FARAWAY\n"
+    .string "ISLAND. MEW hides in the tall\l"
+    .string "grass, so corner it carefully.\p"
+    .string "Good luck, {PLAYER}!\n"
+    .string "Make this old man proud!$"
+
+PalletTown_ProfessorOaksLab_Text_OakMakeRoomForMap::
+    .string "OAK: I have something very\n"
+    .string "important for you, but your\l"
+    .string "BAG is full.\p"
+    .string "Make some room for it and come\n"
+    .string "back to see me.$"
+
 PalletTown_ProfessorOaksLab_Text_PressStartToOpenMenu::
     .string "Press START to open the MENU!$"
 

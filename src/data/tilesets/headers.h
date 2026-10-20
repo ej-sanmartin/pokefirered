@@ -746,3 +746,25 @@ const struct Tileset gTileset_HallOfFame =
     .callback = NULL,
 };
 
+
+const struct Tileset gTileset_FarawayRealPrimary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_FarawayRealPrimary,
+    .palettes = gTilesetPalettes_FarawayRealPrimary,
+    .metatiles = gMetatiles_FarawayRealPrimary,
+    .metatileAttributes = gMetatileAttributes_FarawayRealPrimary,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_FarawayReal =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_FarawayReal,
+    .palettes = gTilesetPalettes_FarawayReal,
+    .metatiles = gMetatiles_FarawayReal,
+    .metatileAttributes = gMetatileAttributes_FarawayReal,
+    .callback = NULL,
+};

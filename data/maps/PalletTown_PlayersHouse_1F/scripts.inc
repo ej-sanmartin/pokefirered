@@ -48,6 +48,9 @@ PalletTown_PlayersHouse_1F_EventScript_TV::
 	end
 
 PalletTown_PlayersHouse_1F_EventScript_TVScreen::
+.ifdef DEBUG_SHORTCUT
+	goto Debug_EventScript_Menu
+.endif
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, PalletTown_PlayersHouse_1F_EventScript_TVScreenMale
 	call_if_eq VAR_RESULT, FEMALE, PalletTown_PlayersHouse_1F_EventScript_TVScreenFemale

@@ -1227,9 +1227,9 @@
 #define FLAG_CAUGHT_ROUTE1_STARTER      0x4A9 // Mod: caught the rival's starter on Route 1
 #define FLAG_HIDE_ROUTE1_STARTER        0x4AA // Mod: hides the Route 1 starter object
 #define FLAG_GOT_SECOND_FOSSIL          0x4AB // Mod: took the other Mt. Moon fossil
-#define FLAG_UNUSED_0x4AC               0x4AC // Unused Flag
-#define FLAG_UNUSED_0x4AD               0x4AD // Unused Flag
-#define FLAG_UNUSED_0x4AE               0x4AE // Unused Flag
+#define FLAG_HIDE_MEW                   0x4AC // Mod: hides Mew on Faraway Island
+#define FLAG_CAUGHT_MEW                 0x4AD // Mod: Mew was caught
+#define FLAG_OAK_GAVE_OLD_SEA_MAP       0x4AE // Mod: Oak told the Mew story
 #define FLAG_UNUSED_0x4AF               0x4AF // Unused Flag
 
 // Boss clear flags, 1200
@@ -1407,6 +1407,7 @@
 #define FLAG_SYS_UNLOCKED_TANOBY_RUINS                              (SYS_FLAGS + 0x49)
 #define FLAG_ENABLE_SHIP_NAVEL_ROCK                                 (SYS_FLAGS + 0x4A)
 #define FLAG_ENABLE_SHIP_BIRTH_ISLAND                               (SYS_FLAGS + 0x4B)
+#define FLAG_ENABLE_SHIP_FARAWAY_ISLAND                             (SYS_FLAGS + 0x4C)
 
 // World Map Flags
 #define FLAG_WORLD_MAP_PALLET_TOWN                                  (SYS_FLAGS + 0x90)

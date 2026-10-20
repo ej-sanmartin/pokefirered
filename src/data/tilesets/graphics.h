@@ -1407,3 +1407,47 @@ const u16 gTilesetPalettes_HallOfFame[][16] =
 	INCBIN_U16("data/tilesets/secondary/hall_of_fame/palettes/14.gbapal"),
 	INCBIN_U16("data/tilesets/secondary/hall_of_fame/palettes/15.gbapal"),
 };
+
+const u32 gTilesetTiles_FarawayRealPrimary[] = INCBIN_U32("data/tilesets/primary/faraway_real_primary/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_FarawayRealPrimary[][16] =
+{
+	INCBIN_U16("data/tilesets/primary/faraway_real_primary/palettes/00.gbapal"),
+	INCBIN_U16("data/tilesets/primary/faraway_real_primary/palettes/01.gbapal"),
+	INCBIN_U16("data/tilesets/primary/faraway_real_primary/palettes/02.gbapal"),
+	INCBIN_U16("data/tilesets/primary/faraway_real_primary/palettes/03.gbapal"),
+	INCBIN_U16("data/tilesets/primary/faraway_real_primary/palettes/04.gbapal"),
+	INCBIN_U16("data/tilesets/primary/faraway_real_primary/palettes/05.gbapal"),
+	INCBIN_U16("data/tilesets/primary/faraway_real_primary/palettes/06.gbapal"),
+	INCBIN_U16("data/tilesets/primary/faraway_real_primary/palettes/07.gbapal"),
+	INCBIN_U16("data/tilesets/primary/faraway_real_primary/palettes/08.gbapal"),
+	INCBIN_U16("data/tilesets/primary/faraway_real_primary/palettes/09.gbapal"),
+	INCBIN_U16("data/tilesets/primary/faraway_real_primary/palettes/10.gbapal"),
+	INCBIN_U16("data/tilesets/primary/faraway_real_primary/palettes/11.gbapal"),
+	INCBIN_U16("data/tilesets/primary/faraway_real_primary/palettes/12.gbapal"),
+	INCBIN_U16("data/tilesets/primary/faraway_real_primary/palettes/13.gbapal"),
+	INCBIN_U16("data/tilesets/primary/faraway_real_primary/palettes/14.gbapal"),
+	INCBIN_U16("data/tilesets/primary/faraway_real_primary/palettes/15.gbapal"),
+};
+
+const u32 gTilesetTiles_FarawayReal[] = INCBIN_U32("data/tilesets/secondary/faraway_real/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_FarawayReal[][16] =
+{
+	INCBIN_U16("data/tilesets/secondary/faraway_real/palettes/00.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/faraway_real/palettes/01.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/faraway_real/palettes/02.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/faraway_real/palettes/03.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/faraway_real/palettes/04.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/faraway_real/palettes/05.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/faraway_real/palettes/06.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/faraway_real/palettes/07.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/faraway_real/palettes/08.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/faraway_real/palettes/09.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/faraway_real/palettes/10.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/faraway_real/palettes/11.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/faraway_real/palettes/12.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/faraway_real/palettes/13.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/faraway_real/palettes/14.gbapal"),
+	INCBIN_U16("data/tilesets/secondary/faraway_real/palettes/15.gbapal"),
+};

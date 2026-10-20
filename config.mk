@@ -52,6 +52,11 @@ ifeq ($(MODERN),1)
   BUILD_NAME := $(BUILD_NAME)_modern
 endif
 
+# Opt-in test build (make leafgreen DEBUG_SHORTCUT=1): separate ROM and objects
+ifeq ($(DEBUG_SHORTCUT),1)
+  BUILD_NAME := $(BUILD_NAME)_debug
+endif
+
 # Language
 ifeq ($(GAME_LANGUAGE),ENGLISH)
   GAME_CODE  := $(GAME_CODE)E

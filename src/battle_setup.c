@@ -367,6 +367,7 @@ void StartLegendaryBattle(void)
     case SPECIES_ZAPDOS:
     case SPECIES_HO_OH:
     case SPECIES_LUGIA:
+    case SPECIES_MEW: // mod: Faraway Island
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_VS_LEGEND);
         break;
     default:

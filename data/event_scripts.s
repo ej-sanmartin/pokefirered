@@ -275,6 +275,11 @@ gStdScriptsEnd::
 	.include "data/maps/OneIsland_KindleRoad_EmberSpa/scripts.inc"
 	.include "data/maps/BirthIsland_Harbor/scripts.inc"
 	.include "data/maps/NavelRock_Harbor/scripts.inc"
+	.include "data/maps/FarawayIsland_Interior/scripts.inc"
+	.include "data/maps/FarawayIsland_Harbor/scripts.inc"
+.ifdef DEBUG_SHORTCUT
+	.include "data/scripts/debug_shortcut.inc"
+.endif
 	.include "data/maps/PalletTown/scripts.inc"
 	.include "data/maps/ViridianCity/scripts.inc"
 	.include "data/maps/PewterCity/scripts.inc"
