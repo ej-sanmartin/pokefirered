@@ -276,6 +276,8 @@ CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_CheckRevivedMtMoonFossil::
 
 CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_CheckRevivedHelix::
 	goto_if_unset FLAG_REVIVED_HELIX, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_SetResultFalse
+	@ Mod: the player may own both Mt. Moon fossils.
+	goto_if_set FLAG_GOT_DOME_FOSSIL, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_CheckRevivedDome
 	setvar VAR_RESULT, TRUE
 	return
 

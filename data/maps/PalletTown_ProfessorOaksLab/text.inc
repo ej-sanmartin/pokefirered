@@ -237,7 +237,21 @@ PalletTown_ProfessorOaksLab_Text_ThoseArePokeBalls::
     .string "They contain POKéMON!$"
 
 PalletTown_ProfessorOaksLab_Text_OaksLastMon::
-    .string "That's PROF. OAK's last POKéMON.$"
+    .string "That's PROF. OAK's last POKéMON.\p"
+    .string "Maybe I should come back after\n"
+    .string "I've proven myself…$"
+
+PalletTown_ProfessorOaksLab_Text_OakCongratsChampion::
+    .string "OAK: {PLAYER}!\n"
+    .string "Congratulations on becoming the\l"
+    .string "POKéMON LEAGUE CHAMPION!\p"
+    .string "You've proven yourself as a\n"
+    .string "true POKéMON TRAINER.$"
+
+PalletTown_ProfessorOaksLab_Text_OakTakeLastMonAsPrize::
+    .string "Please, take my last POKéMON as\n"
+    .string "a prize for your accomplishment.\p"
+    .string "Will you take it?$"
 
 PalletTown_ProfessorOaksLab_Text_PressStartToOpenMenu::
     .string "Press START to open the MENU!$"

@@ -13,7 +13,12 @@ MtMoon_B2F_Text_WellEachTakeAFossil::
 
 MtMoon_B2F_Text_ThenThisFossilIsMine::
     .string "All right.\n"
-    .string "Then this fossil is mine!$"
+    .string "I'll come back for the other one!$"
+
+MtMoon_B2F_Text_ShouldComeBackLater::
+    .string "There's another fossil here.\p"
+    .string "I'm not worthy of it yet…\n"
+    .string "Maybe I should come back later.$"
 
 MtMoon_B2F_Text_LabOnCinnabarRegeneratesFossils::
     .string "Far away, on CINNABAR ISLAND,\n"

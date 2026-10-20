@@ -252,8 +252,7 @@ bool8 RS_IsRunningDisallowed(u8 r0)
 
 bool32 IsRunningDisallowed(u8 metatileBehavior)
 {
-    if (!gMapHeader.allowRunning)
-        return TRUE;
+    // Running is allowed indoors too (mod): gMapHeader.allowRunning ignored.
     if (MetatileBehaviorForbidsBiking(metatileBehavior) != TRUE)
         return FALSE;
     else

@@ -1222,11 +1222,11 @@
 #define FLAG_HIDDEN_ITEM_SSANNE_EXTERIOR_LAVA_COOKIE                       (FLAG_HIDDEN_ITEMS_START + 190)
 
 // Unused hidden item flags
-#define FLAG_UNUSED_0x4A7               0x4A7 // Unused Flag
-#define FLAG_UNUSED_0x4A8               0x4A8 // Unused Flag
-#define FLAG_UNUSED_0x4A9               0x4A9 // Unused Flag
-#define FLAG_UNUSED_0x4AA               0x4AA // Unused Flag
-#define FLAG_UNUSED_0x4AB               0x4AB // Unused Flag
+#define FLAG_GOT_MOM_POSTGAME_GIFT      0x4A7 // Mod: Mom's post-Elite Four gift
+#define FLAG_GOT_LEFTOVER_STARTER       0x4A8 // Mod: took the last Poke Ball in Oak's Lab
+#define FLAG_CAUGHT_ROUTE1_STARTER      0x4A9 // Mod: caught the rival's starter on Route 1
+#define FLAG_HIDE_ROUTE1_STARTER        0x4AA // Mod: hides the Route 1 starter object
+#define FLAG_GOT_SECOND_FOSSIL          0x4AB // Mod: took the other Mt. Moon fossil
 #define FLAG_UNUSED_0x4AC               0x4AC // Unused Flag
 #define FLAG_UNUSED_0x4AD               0x4AD // Unused Flag
 #define FLAG_UNUSED_0x4AE               0x4AE // Unused Flag

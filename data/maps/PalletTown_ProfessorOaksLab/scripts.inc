@@ -1235,8 +1235,64 @@ PalletTown_ProfessorOaksLab_EventScript_CharmanderBall::
 	release
 	end
 
+@ Mod: the Poke Ball nobody picked can be taken once the player is Champion.
+@ PLAYER_STARTER_SPECIES holds this ball's species (set by the ball script).
 PalletTown_ProfessorOaksLab_EventScript_LastPokeBall::
+	goto_if_set FLAG_SYS_GAME_CLEAR, PalletTown_ProfessorOaksLab_EventScript_ChampionPrizeBall
 	msgbox PalletTown_ProfessorOaksLab_Text_OaksLastMon
+	release
+	end
+
+PalletTown_ProfessorOaksLab_EventScript_ChampionPrizeBall::
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox PalletTown_ProfessorOaksLab_Text_OakCongratsChampion
+	showmonpic PLAYER_STARTER_SPECIES, 10, 3
+	msgbox PalletTown_ProfessorOaksLab_Text_OakTakeLastMonAsPrize, MSGBOX_YESNO
+	hidemonpic
+	call EventScript_RestorePrevTextColor
+	goto_if_eq VAR_RESULT, NO, PalletTown_ProfessorOaksLab_EventScript_EndPrizeBall
+	copyvar VAR_TEMP_1, PLAYER_STARTER_SPECIES
+	givemon VAR_TEMP_1, 5
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, PalletTown_ProfessorOaksLab_EventScript_PrizeMonToParty
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, PalletTown_ProfessorOaksLab_EventScript_PrizeMonToPC
+	goto EventScript_NoMoreRoomForPokemon
+	end
+
+PalletTown_ProfessorOaksLab_EventScript_PrizeMonToParty::
+	call PalletTown_ProfessorOaksLab_EventScript_ReceivePrizeMon
+	msgbox Text_GiveNicknameToThisMon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, PalletTown_ProfessorOaksLab_EventScript_EndPrizeBall
+	call EventScript_GetGiftMonPartySlot
+	call EventScript_ChangePokemonNickname
+	goto PalletTown_ProfessorOaksLab_EventScript_EndPrizeBall
+	end
+
+PalletTown_ProfessorOaksLab_EventScript_PrizeMonToPC::
+	call PalletTown_ProfessorOaksLab_EventScript_ReceivePrizeMon
+	msgbox Text_GiveNicknameToThisMon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, PalletTown_ProfessorOaksLab_EventScript_PrizeMonSentToPC
+	call EventScript_NameReceivedBoxMon
+	goto PalletTown_ProfessorOaksLab_EventScript_PrizeMonSentToPC
+	end
+
+PalletTown_ProfessorOaksLab_EventScript_PrizeMonSentToPC::
+	call EventScript_TransferredToPC
+	goto PalletTown_ProfessorOaksLab_EventScript_EndPrizeBall
+	end
+
+PalletTown_ProfessorOaksLab_EventScript_ReceivePrizeMon::
+	removeobject VAR_LAST_TALKED
+	setflag FLAG_GOT_LEFTOVER_STARTER
+	bufferspeciesname STR_VAR_1, VAR_TEMP_1
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	message PalletTown_ProfessorOaksLab_Text_ReceivedMonFromOak
+	waitmessage
+	playfanfare MUS_OBTAIN_KEY_ITEM
+	waitfanfare
+	call EventScript_RestorePrevTextColor
+	return
+
+PalletTown_ProfessorOaksLab_EventScript_EndPrizeBall::
 	release
 	end
 

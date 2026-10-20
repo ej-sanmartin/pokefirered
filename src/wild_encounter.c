@@ -266,10 +266,43 @@ enum
 #define WILD_CHECK_REPEL    0x1
 #define WILD_CHECK_KEEN_EYE 0x2
 
+// Returns the wild mon for a slot. If the other game version has a different
+// species in this slot, there is a 50% chance to use it instead, so FireRed
+// and LeafGreen exclusives are both catchable.
+// info: this version's table. area: WILD_AREA_*. slot: chosen slot index.
+static const struct WildPokemon * PickWildMon(const struct WildPokemonInfo * info, u8 area, u8 slot)
+{
+    const struct WildPokemon * mon = &info->wildPokemon[slot];
+    const struct WildPokemonInfo * alt = NULL;
+    u16 headerId = GetCurrentMapWildMonHeaderId();
+
+    if (headerId == HEADER_NONE)
+        return mon;
+    switch (area)
+    {
+    case WILD_AREA_LAND:
+        alt = gWildMonHeadersAlt[headerId].landMonsInfo;
+        break;
+    case WILD_AREA_WATER:
+        alt = gWildMonHeadersAlt[headerId].waterMonsInfo;
+        break;
+    case WILD_AREA_ROCKS:
+        alt = gWildMonHeadersAlt[headerId].rockSmashMonsInfo;
+        break;
+    case WILD_AREA_FISHING:
+        alt = gWildMonHeadersAlt[headerId].fishingMonsInfo;
+        break;
+    }
+    if (alt != NULL && alt->wildPokemon[slot].species != mon->species && (Random() & 1))
+        mon = &alt->wildPokemon[slot];
+    return mon;
+}
+
 static bool8 TryGenerateWildMon(const struct WildPokemonInfo * info, u8 area, u8 flags)
 {
     u8 slot = 0;
     u8 level;
+    const struct WildPokemon * mon;
     switch (area)
     {
     case WILD_AREA_LAND:
@@ -282,21 +315,23 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo * info, u8 area, u8
         slot = ChooseWildMonIndex_WaterRock();
         break;
     }
-    level = ChooseWildMonLevel(&info->wildPokemon[slot]);
+    mon = PickWildMon(info, area, slot);
+    level = ChooseWildMonLevel(mon);
     if (flags == WILD_CHECK_REPEL && !IsWildLevelAllowedByRepel(level))
     {
         return FALSE;
     }
-    GenerateWildMon(info->wildPokemon[slot].species, level, slot);
+    GenerateWildMon(mon->species, level, slot);
     return TRUE;
 }
 
 static u16 GenerateFishingEncounter(const struct WildPokemonInfo * info, u8 rod)
 {
     u8 slot = ChooseWildMonIndex_Fishing(rod);
-    u8 level = ChooseWildMonLevel(&info->wildPokemon[slot]);
-    GenerateWildMon(info->wildPokemon[slot].species, level, slot);
-    return info->wildPokemon[slot].species;
+    const struct WildPokemon * mon = PickWildMon(info, WILD_AREA_FISHING, slot);
+    u8 level = ChooseWildMonLevel(mon);
+    GenerateWildMon(mon->species, level, slot);
+    return mon->species;
 }
 
 static bool8 DoWildEncounterRateDiceRoll(u16 encounterRate)

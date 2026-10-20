@@ -7,6 +7,11 @@
 #include "field_fadetransition.h"
 #include "pokemon_summary_screen.h"
 #include "event_data.h"
+#include "evolution_scene.h"
+#include "pokemon.h"
+#include "constants/species.h"
+#include "constants/items.h"
+#include "constants/pokemon.h"
 #include "constants/moves.h"
 
 static void Task_ChoosePartyMon(u8 taskId);
@@ -106,3 +111,54 @@ void IsSelectedMonEgg(void)
     else
         gSpecialVar_Result = FALSE;
 }
+
+// Returns the species a party mon would evolve into by trading, or
+// SPECIES_NONE. Works on a copy because GetEvolutionTargetSpecies consumes
+// the held item. mon: party mon to check.
+static u16 GetTradeEvolutionPreview(struct Pokemon *mon)
+{
+    struct Pokemon copy = *mon;
+    u16 target;
+
+    if (GetMonData(mon, MON_DATA_IS_EGG))
+        return SPECIES_NONE;
+    target = GetEvolutionTargetSpecies(&copy, EVO_MODE_TRADE, ITEM_NONE);
+    // Gen 2+ targets (e.g. Scizor) wait for the National Dex.
+    if (target > KANTO_SPECIES_END && !IsNationalPokedexEnabled())
+        return SPECIES_NONE;
+    return target;
+}
+
+// Special (specialvar): TRUE if any party mon can evolve by trading now.
+bool8 HasTradeEvolvableMon(void)
+{
+    u8 i;
+
+    for (i = 0; i < gPlayerPartyCount; i++)
+    {
+        if (GetTradeEvolutionPreview(&gPlayerParty[i]) != SPECIES_NONE)
+            return TRUE;
+    }
+    return FALSE;
+}
+
+// Special (specialvar): TRUE if party slot VAR_0x8004 can trade-evolve now.
+bool8 CanSelectedMonTradeEvolve(void)
+{
+    if (gSpecialVar_0x8004 >= gPlayerPartyCount)
+        return FALSE;
+    return GetTradeEvolutionPreview(&gPlayerParty[gSpecialVar_0x8004]) != SPECIES_NONE;
+}
+
+// Special: evolves party slot VAR_0x8004 as if traded (consumes its held
+// evolution item). The script must `waitstate` after calling this.
+void StartSelectedMonTradeEvolution(void)
+{
+    struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8004];
+    u16 target = GetTradeEvolutionPreview(mon);
+
+    GetEvolutionTargetSpecies(mon, EVO_MODE_TRADE, ITEM_NONE);
+    gCB2_AfterEvolution = CB2_ReturnToFieldContinueScriptPlayMapMusic;
+    BeginEvolutionScene(mon, target, FALSE, gSpecialVar_0x8004);
+}
+

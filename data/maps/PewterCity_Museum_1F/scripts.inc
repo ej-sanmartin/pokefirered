@@ -142,13 +142,49 @@ PewterCity_Museum_1F_EventScript_OldMan::
 PewterCity_Museum_1F_EventScript_OldAmberScientist::
 	lock
 	faceplayer
-	goto_if_set FLAG_GOT_OLD_AMBER, PewterCity_Museum_1F_EventScript_AlreadyGotOldAmber
+	goto_if_set FLAG_GOT_OLD_AMBER, PewterCity_Museum_1F_EventScript_OldAmberScientistPrizeCheck
 	msgbox PewterCity_Museum_1F_Text_WantYouToGetAmberExamined
 	checkitemspace ITEM_OLD_AMBER
 	goto_if_eq VAR_RESULT, FALSE, PewterCity_Museum_1F_EventScript_NoRoomForOldAmber
 	setflag FLAG_GOT_OLD_AMBER
 	removeobject LOCALID_OLD_AMBER
 	giveitem_msg PewterCity_Museum_1F_Text_ReceivedOldAmberFromMan, ITEM_OLD_AMBER, 1, MUS_OBTAIN_KEY_ITEM
+	goto PewterCity_Museum_1F_EventScript_OldAmberScientistPrizeCheck
+	end
+
+@ Mod: after the Old Amber, a Champion who took a Mt. Moon fossil gets the
+@ other one as a prize (once).
+PewterCity_Museum_1F_EventScript_OldAmberScientistPrizeCheck::
+	goto_if_unset FLAG_SYS_GAME_CLEAR, PewterCity_Museum_1F_EventScript_AlreadyGotOldAmber
+	goto_if_unset FLAG_GOT_FOSSIL_FROM_MT_MOON, PewterCity_Museum_1F_EventScript_AlreadyGotOldAmber
+	goto_if_set FLAG_GOT_SECOND_FOSSIL, PewterCity_Museum_1F_EventScript_AlreadyGotOldAmber
+	goto PewterCity_Museum_1F_EventScript_ChampionFossilPrize
+	end
+
+@ Mod: Champion prize. Gives the Mt. Moon fossil the player did not pick.
+PewterCity_Museum_1F_EventScript_ChampionFossilPrize::
+	msgbox PewterCity_Museum_1F_Text_CongratsChampionFossilPrize
+	goto_if_set FLAG_GOT_DOME_FOSSIL, PewterCity_Museum_1F_EventScript_GiveHelixFossilPrize
+	goto PewterCity_Museum_1F_EventScript_GiveDomeFossilPrize
+	end
+
+PewterCity_Museum_1F_EventScript_GiveHelixFossilPrize::
+	checkitemspace ITEM_HELIX_FOSSIL
+	goto_if_eq VAR_RESULT, FALSE, PewterCity_Museum_1F_EventScript_NoRoomForOldAmber
+	setflag FLAG_GOT_HELIX_FOSSIL
+	setflag FLAG_GOT_SECOND_FOSSIL
+	setflag FLAG_HIDE_HELIX_FOSSIL
+	giveitem_msg MtMoon_B2F_Text_ObtainedHelixFossil, ITEM_HELIX_FOSSIL, 1, MUS_OBTAIN_KEY_ITEM
+	release
+	end
+
+PewterCity_Museum_1F_EventScript_GiveDomeFossilPrize::
+	checkitemspace ITEM_DOME_FOSSIL
+	goto_if_eq VAR_RESULT, FALSE, PewterCity_Museum_1F_EventScript_NoRoomForOldAmber
+	setflag FLAG_GOT_DOME_FOSSIL
+	setflag FLAG_GOT_SECOND_FOSSIL
+	setflag FLAG_HIDE_DOME_FOSSIL
+	giveitem_msg MtMoon_B2F_Text_ObtainedDomeFossil, ITEM_DOME_FOSSIL, 1, MUS_OBTAIN_KEY_ITEM
 	release
 	end
 

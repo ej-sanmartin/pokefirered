@@ -565,9 +565,28 @@ static void Task_UseRepel(u8 taskId)
     {
         ItemUse_SetQuestLogEvent(QL_EVENT_USED_ITEM, NULL, gSpecialVar_ItemId, 0xFFFF);
         VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(gSpecialVar_ItemId));
+        VarSet(VAR_LAST_REPEL_ITEM, gSpecialVar_ItemId);
         RemoveUsedItem();
         DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar4, Task_ReturnToBagFromContextMenu);
     }
+}
+
+// Special: TRUE if the bag still holds the last Repel type that was used.
+bool8 HasLastRepelItem(void)
+{
+    u16 item = VarGet(VAR_LAST_REPEL_ITEM);
+
+    return item != ITEM_NONE && CheckBagHasItem(item, 1);
+}
+
+// Special: consumes one of the last used Repel and restarts its steps.
+void UseLastRepelItem(void)
+{
+    u16 item = VarGet(VAR_LAST_REPEL_ITEM);
+
+    PlaySE(SE_REPEL);
+    RemoveBagItem(item, 1);
+    VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(item));
 }
 
 static void RemoveUsedItem(void)

@@ -85,3 +85,13 @@ PewterCity_Museum_1F_Text_KabutopsFossil::
     .string "KABUTOPS Fossil\n"
     .string "A primitive and rare POKéMON.$"
 
+PewterCity_Museum_1F_Text_CongratsChampionFossilPrize::
+    .string "Oh! You're the new POKéMON\n"
+    .string "LEAGUE CHAMPION!\p"
+    .string "Congratulations! The whole\n"
+    .string "museum is talking about you.\p"
+    .string "We had the other fossil from\n"
+    .string "MT. MOON brought here.\p"
+    .string "Please take it as a prize for\n"
+    .string "your extraordinary achievement!$"
+

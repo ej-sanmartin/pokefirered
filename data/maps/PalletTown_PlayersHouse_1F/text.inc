@@ -40,3 +40,21 @@ PalletTown_PlayersHouse_1F_Text_MovieOnTVGirlOnBrickRoad::
 PalletTown_PlayersHouse_1F_Text_OopsWrongSide::
     .string "Oops, wrong side…$"
 
+PalletTown_PlayersHouse_1F_Text_MomYouAreChampion::
+    .string "MOM: My little boy is a champion!\p"
+    .string "I got something special for you\n"
+    .string "for all your hard work!$"
+
+PalletTown_PlayersHouse_1F_Text_ObtainedTheTickets::
+    .string "{PLAYER} obtained the\n"
+    .string "MYSTIC TICKET, AURORA TICKET\l"
+    .string "and RAINBOW PASS!$"
+
+PalletTown_PlayersHouse_1F_Text_PokedexWasUpgraded::
+    .string "{PLAYER}'s POKéDEX was upgraded\n"
+    .string "to the NATIONAL DEX!$"
+
+PalletTown_PlayersHouse_1F_Text_MomEnjoyTheIslands::
+    .string "Now every island is open to you.\n"
+    .string "Have fun, but be safe!$"
+

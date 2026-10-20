@@ -33,7 +33,18 @@ struct WildPokemonHeader
     const struct WildPokemonInfo *fishingMonsInfo;
 };
 
-extern const struct WildPokemonHeader gWildMonHeaders[];
+// Both versions' encounter tables are always built. gWildMonHeaders is the
+// active version; gWildMonHeadersAlt is the other one (same map order), used
+// so version-exclusive species can also be found.
+extern const struct WildPokemonHeader gWildMonHeadersFireRed[];
+extern const struct WildPokemonHeader gWildMonHeadersLeafGreen[];
+#ifdef FIRERED
+#define gWildMonHeaders     gWildMonHeadersFireRed
+#define gWildMonHeadersAlt  gWildMonHeadersLeafGreen
+#else
+#define gWildMonHeaders     gWildMonHeadersLeafGreen
+#define gWildMonHeadersAlt  gWildMonHeadersFireRed
+#endif
 
 void DisableWildEncounters(bool8 disabled);
 bool8 StandardWildEncounter(u32 currMetatileAttrs, u16 previousMetaTileBehavior);

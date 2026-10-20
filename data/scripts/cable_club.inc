@@ -844,6 +844,9 @@ CableClub_EventScript_DirectCornerAttendant::
 	lock
 	faceplayer
 	goto_if_unset FLAG_SYS_POKEDEX_GET, CableClub_EventScript_WirelessClubAdjustements
+	specialvar VAR_RESULT, HasTradeEvolvableMon
+	goto_if_eq VAR_RESULT, TRUE, CableClub_EventScript_OfferTradeEvolution
+CableClub_EventScript_DirectCornerAttendantMain::
 	specialvar VAR_RESULT, IsBadEggInParty
 	goto_if_eq VAR_RESULT, TRUE, CableClub_EventScript_AbortLinkPlayerHasBadEgg
 	specialvar VAR_RESULT, IsWirelessAdapterConnected
@@ -852,6 +855,33 @@ CableClub_EventScript_DirectCornerAttendant::
 	waitmessage
 	delay 15
 	goto CableClub_EventScript_DirectCornerSelectService
+	end
+
+@ Mod: evolves trade-evolution mons in place (they must hold their item, if
+@ the evolution needs one). Offered only when a party mon is eligible.
+CableClub_EventScript_OfferTradeEvolution::
+	msgbox CableClub_Text_TradeEvolutionOffer, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, CableClub_EventScript_DirectCornerAttendantMain
+CableClub_EventScript_ChooseTradeEvolutionMon::
+	msgbox CableClub_Text_TradeEvolutionWhichMon
+	special ChoosePartyMon
+	waitstate
+	lock
+	faceplayer
+	goto_if_ge VAR_0x8004, PARTY_SIZE, CableClub_EventScript_DirectCornerAttendantMain
+	specialvar VAR_RESULT, CanSelectedMonTradeEvolve
+	goto_if_eq VAR_RESULT, FALSE, CableClub_EventScript_CantTradeEvolveMon
+	special StartSelectedMonTradeEvolution
+	waitstate
+	lock
+	faceplayer
+	msgbox CableClub_Text_TradeEvolutionDone
+	release
+	end
+
+CableClub_EventScript_CantTradeEvolveMon::
+	msgbox CableClub_Text_TradeEvolutionCant
+	goto CableClub_EventScript_ChooseTradeEvolutionMon
 	end
 
 CableClub_EventScript_DirectCornerSelectService::
@@ -1752,3 +1782,24 @@ CableClub_Text_ExplainWirelessClub::
 CableClub_Text_HopeYouEnjoyWirelessSystem::
 	.string "I hope you enjoy the Wireless\n"
 	.string "Communication System.$"
+
+CableClub_Text_TradeEvolutionOffer::
+	.string "Oh! One of your POKéMON seems\n"
+	.string "ready to evolve by trading.\p"
+	.string "I can set that up right here,\n"
+	.string "without a trading partner.\p"
+	.string "Would you like that?$"
+
+CableClub_Text_TradeEvolutionWhichMon::
+	.string "Which POKéMON should I evolve?$"
+
+CableClub_Text_TradeEvolutionCant::
+	.string "That POKéMON can't evolve this\n"
+	.string "way right now.\p"
+	.string "Some need to hold a special\n"
+	.string "item first.$"
+
+CableClub_Text_TradeEvolutionDone::
+	.string "There you go!\n"
+	.string "Please come again.$"
+
