@@ -70,7 +70,17 @@ SixIsland_PokemonCenter_1F_EventScript_Nurse::
 	end
 
 SixIsland_PokemonCenter_1F_EventScript_Hiker::
-	msgbox SixIsland_PokemonCenter_1F_Text_SomethingHiddenOnThisIsland, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_set FLAG_TEMP_NPC_TALKED, SixIsland_PokemonCenter_1F_EventScript_Hiker_Bonus
+	msgbox SixIsland_PokemonCenter_1F_Text_SomethingHiddenOnThisIsland
+	setflag FLAG_TEMP_NPC_TALKED
+	release
+	end
+
+SixIsland_PokemonCenter_1F_EventScript_Hiker_Bonus::
+	msgbox SixIsland_PokemonCenter_1F_Text_LookingIsHalfTheFun
+	release
 	end
 
 SixIsland_PokemonCenter_1F_EventScript_OldMan::

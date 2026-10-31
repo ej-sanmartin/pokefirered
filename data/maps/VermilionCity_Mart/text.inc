@@ -12,3 +12,9 @@ VermilionCity_Mart_Text_MonsGoodOrBadDependingOnTrainer::
     .string "I think POKéMON can be good or\n"
     .string "bad. It depends on the TRAINER.$"
 
+VermilionCity_Mart_Text_TrainerGetsToDecide::
+    .string "Which means a TRAINER gets to\n"
+    .string "decide.\p"
+    .string "Nobody hands you the kind of\n"
+    .string "TRAINER you'll be.\p"
+    .string "You pick it a little at a time.$"

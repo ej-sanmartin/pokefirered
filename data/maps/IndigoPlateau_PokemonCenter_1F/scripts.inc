@@ -35,7 +35,17 @@ IndigoPlateau_PokemonCenter_1F_EventScript_SeviiIslandComplete::
 	end
 
 IndigoPlateau_PokemonCenter_1F_EventScript_GymGuy::
-	msgbox IndigoPlateau_PokemonCenter_1F_Text_GymGuyAdvice, MSGBOX_NPC
+	lock
+	faceplayer
+	msgbox IndigoPlateau_PokemonCenter_1F_Text_GymGuyAdvice
+	goto_if_set FLAG_TEMP_NPC_TALKED, IndigoPlateau_PokemonCenter_1F_EventScript_GymGuy_Bonus
+	setflag FLAG_TEMP_NPC_TALKED
+	release
+	end
+
+IndigoPlateau_PokemonCenter_1F_EventScript_GymGuy_Bonus::
+	msgbox IndigoPlateau_PokemonCenter_1F_Text_LosingIsNotTheEnd
+	release
 	end
 
 IndigoPlateau_PokemonCenter_1F_EventScript_Clerk::

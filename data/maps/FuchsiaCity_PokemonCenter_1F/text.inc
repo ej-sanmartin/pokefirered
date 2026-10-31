@@ -16,3 +16,8 @@ FuchsiaCity_PokemonCenter_1F_Text_VisitSafariZoneForPokedex::
     .string "All sorts of rare POKéMON breed\n"
     .string "there.$"
 
+FuchsiaCity_PokemonCenter_1F_Text_EveryoneIsWorthSomeTime::
+    .string "Funny thing, though.\p"
+    .string "The POKéMON I almost didn't bother\n"
+    .string "with surprised me the most.\p"
+    .string "Everybody's worth a little time.$"

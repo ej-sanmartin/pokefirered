@@ -372,7 +372,17 @@ OneIsland_PokemonCenter_1F_Movement_CelioPutGemInMachine::
 	step_end
 
 OneIsland_PokemonCenter_1F_EventScript_LittleBoy::
-	msgbox OneIsland_PokemonCenter_1F_Text_CameFromPalletDontKnowIt, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_set FLAG_TEMP_NPC_TALKED, OneIsland_PokemonCenter_1F_EventScript_LittleBoy_Bonus
+	msgbox OneIsland_PokemonCenter_1F_Text_CameFromPalletDontKnowIt
+	setflag FLAG_TEMP_NPC_TALKED
+	release
+	end
+
+OneIsland_PokemonCenter_1F_EventScript_LittleBoy_Bonus::
+	msgbox OneIsland_PokemonCenter_1F_Text_NowIKnowSomeoneFromThere
+	release
 	end
 
 OneIsland_PokemonCenter_1F_EventScript_Hiker::

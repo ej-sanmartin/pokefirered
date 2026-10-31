@@ -251,7 +251,17 @@ CeruleanCity_EventScript_BaldingMan::
 	end
 
 CeruleanCity_EventScript_Youngster::
-	msgbox CeruleanCity_Text_TrainerLifeIsToughIsntIt, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_set FLAG_TEMP_NPC_TALKED, CeruleanCity_EventScript_Youngster_Bonus
+	msgbox CeruleanCity_Text_TrainerLifeIsToughIsntIt
+	setflag FLAG_TEMP_NPC_TALKED
+	release
+	end
+
+CeruleanCity_EventScript_Youngster_Bonus::
+	msgbox CeruleanCity_Text_MonsComeRunningWhenCalled
+	release
 	end
 
 CeruleanCity_EventScript_CeruleanCaveGuard::

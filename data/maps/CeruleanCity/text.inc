@@ -180,3 +180,9 @@ CeruleanCity_Text_GymSign::
     .string "LEADER: MISTY\l"
     .string "The Tomboyish Mermaid!$"
 
+CeruleanCity_Text_MonsComeRunningWhenCalled::
+    .string "I lose plenty of battles, you know.\p"
+    .string "But my POKéMON still come running\n"
+    .string "when I call.\p"
+    .string "I figure that's the part that\n"
+    .string "counts.$"

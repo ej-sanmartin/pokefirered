@@ -41,3 +41,9 @@ IndigoPlateau_PokemonCenter_1F_Text_LancesCousinGymLeaderFarAway::
     .string "a cousin who's a GYM LEADER\l"
     .string "somewhere far away.$"
 
+IndigoPlateau_PokemonCenter_1F_Text_LosingIsNotTheEnd::
+    .string "And hey, if you lose in there,\n"
+    .string "don't sweat it.\p"
+    .string "Every CHAMPION lost plenty before\n"
+    .string "they won.\p"
+    .string "The good ones just come back!$"

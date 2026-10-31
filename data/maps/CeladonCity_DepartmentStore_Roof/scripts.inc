@@ -190,7 +190,17 @@ CeladonCity_DepartmentStore_Roof_EventScript_NotThirstyAfterAll::
 	end
 
 CeladonCity_DepartmentStore_Roof_EventScript_CooltrainerM::
-	msgbox CeladonCity_DepartmentStore_Roof_Text_MySisterIsImmature, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_set FLAG_TEMP_NPC_TALKED, CeladonCity_DepartmentStore_Roof_EventScript_CooltrainerM_Bonus
+	msgbox CeladonCity_DepartmentStore_Roof_Text_MySisterIsImmature
+	setflag FLAG_TEMP_NPC_TALKED
+	release
+	end
+
+CeladonCity_DepartmentStore_Roof_EventScript_CooltrainerM_Bonus::
+	msgbox CeladonCity_DepartmentStore_Roof_Text_HearHerCheering
+	release
 	end
 
 CeladonCity_DepartmentStore_Roof_EventScript_FloorSign::

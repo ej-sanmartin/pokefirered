@@ -2,7 +2,17 @@ Route8_WestEntrance_MapScripts::
 	.byte 0
 
 Route8_WestEntrance_EventScript_Guard::
-	msgbox Route8_WestEntrance_Text_HiHowsItGoing, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_set FLAG_TEMP_NPC_TALKED, Route8_WestEntrance_EventScript_Guard_Bonus
+	msgbox Route8_WestEntrance_Text_HiHowsItGoing
+	setflag FLAG_TEMP_NPC_TALKED
+	release
+	end
+
+Route8_WestEntrance_EventScript_Guard_Bonus::
+	msgbox Route8_WestEntrance_Text_TheyThankTheirMons
+	release
 	end
 
 Route8_WestEntrance_EventScript_GuardTriggerTop::

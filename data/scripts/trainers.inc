@@ -302,7 +302,13 @@ Route6_EventScript_Elijah::
 	trainerbattle_single TRAINER_BUG_CATCHER_ELIJAH, Route6_Text_ElijahIntro, Route6_Text_ElijahDefeat
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, Route6_EventScript_ElijahRematch
+	goto_if_set FLAG_TEMP_NPC_TALKED, Route6_EventScript_ElijahBonus
 	msgbox Route6_Text_ElijahPostBattle, MSGBOX_AUTOCLOSE
+	setflag FLAG_TEMP_NPC_TALKED
+	end
+
+Route6_EventScript_ElijahBonus::
+	msgbox Route6_Text_ElijahEveryoneIsNewOnce, MSGBOX_AUTOCLOSE
 	end
 
 Route6_EventScript_ElijahRematch::

@@ -103,3 +103,11 @@ ViridianForest_Text_LeavingViridianForest::
     .string "LEAVING VIRIDIAN FOREST\n"
     .string "PEWTER CITY AHEAD$"
 
+ViridianForest_Text_FriendsSearchForEachOther::
+    .string "Know what's great about hunting\n"
+    .string "POKéMON with friends?\p"
+    .string "Nobody has to search the tall grass\n"
+    .string "all by themselves.\p"
+    .string "…Okay, sometimes we end up\n"
+    .string "searching for each other.\p"
+    .string "That counts, too!$"

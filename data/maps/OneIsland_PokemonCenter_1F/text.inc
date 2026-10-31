@@ -355,3 +355,8 @@ OneIsland_PokemonCenter_1F_Text_MachineLinkedWithKantoAndHoenn::
 OneIsland_PokemonCenter_1F_Text_ObtainedTriPass::
     .string "Obtained the TRI-PASS!$"
 
+OneIsland_PokemonCenter_1F_Text_NowIKnowSomeoneFromThere::
+    .string "…But now I know somebody from\n"
+    .string "there!\p"
+    .string "That makes it a place I know.\n"
+    .string "Funny how that works!$"

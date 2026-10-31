@@ -2,7 +2,17 @@ VermilionCity_Mart_MapScripts::
 	.byte 0
 
 VermilionCity_Mart_EventScript_CooltrainerF::
-	msgbox VermilionCity_Mart_Text_MonsGoodOrBadDependingOnTrainer, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_set FLAG_TEMP_NPC_TALKED, VermilionCity_Mart_EventScript_CooltrainerF_Bonus
+	msgbox VermilionCity_Mart_Text_MonsGoodOrBadDependingOnTrainer
+	setflag FLAG_TEMP_NPC_TALKED
+	release
+	end
+
+VermilionCity_Mart_EventScript_CooltrainerF_Bonus::
+	msgbox VermilionCity_Mart_Text_TrainerGetsToDecide
+	release
 	end
 
 VermilionCity_Mart_EventScript_BaldingMan::

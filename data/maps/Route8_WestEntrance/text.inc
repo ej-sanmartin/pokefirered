@@ -24,3 +24,11 @@ Route8_WestEntrance_Text_ThanksIllShareTeaWithGuards::
 Route8_WestEntrance_Text_HiHowsItGoing::
     .string "Hi, how's it going?$"
 
+Route8_WestEntrance_Text_TheyThankTheirMons::
+    .string "Hey, back again?\p"
+    .string "I stand here all day and watch\n"
+    .string "TRAINERS walk by.\p"
+    .string "The ones I remember thank their\n"
+    .string "POKéMON after every battle.\p"
+    .string "I don't know why I notice. I just\n"
+    .string "do.$"

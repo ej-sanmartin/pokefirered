@@ -7,7 +7,17 @@ ViridianForest_OnTransition::
 	end
 
 ViridianForest_EventScript_Youngster::
-	msgbox ViridianForest_Text_FriendsItchingToBattle, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_set FLAG_TEMP_NPC_TALKED, ViridianForest_EventScript_Youngster_Bonus
+	msgbox ViridianForest_Text_FriendsItchingToBattle
+	setflag FLAG_TEMP_NPC_TALKED
+	release
+	end
+
+ViridianForest_EventScript_Youngster_Bonus::
+	msgbox ViridianForest_Text_FriendsSearchForEachOther
+	release
 	end
 
 ViridianForest_EventScript_Boy::

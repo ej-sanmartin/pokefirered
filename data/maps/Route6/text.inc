@@ -71,3 +71,8 @@ Route6_Text_UndergroundPathSign::
     .string "UNDERGROUND PATH\n"
     .string "CERULEAN CITY - VERMILION CITY$"
 
+Route6_Text_ElijahEveryoneIsNewOnce::
+    .string "…Hmm. Maybe it's neither.\p"
+    .string "Maybe I'm just new at this.\p"
+    .string "Everybody's new at it once, right?\p"
+    .string "Thanks for the battle!$"

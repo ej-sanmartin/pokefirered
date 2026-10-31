@@ -80,3 +80,9 @@ CeladonCity_DepartmentStore_Roof_Text_NoMoreRoomForStuff::
 CeladonCity_DepartmentStore_Roof_Text_NotThirsty::
     .string "Not thirsty!$"
 
+CeladonCity_DepartmentStore_Roof_Text_HearHerCheering::
+    .string "…Still, whenever I battle, I can\n"
+    .string "hear her cheering.\p"
+    .string "Even when she's nowhere around.\p"
+    .string "Weird, huh? Don't tell her I said\n"
+    .string "that.$"

@@ -52,3 +52,9 @@ PewterCity_Museum_1F_Text_MeteoriteThatFellOnMtMoon::
     .string "A meteorite that fell on MT. MOON.\n"
     .string "It is thought to be a MOON STONE.$"
 
+PewterCity_Museum_2F_Text_KeepAskingQuestions::
+    .string "Somebody once looked at the moon\n"
+    .string "and asked, “What's up there?”\p"
+    .string "Then they never stopped asking.\p"
+    .string "Funny how the world rewards the\n"
+    .string "ones who keep asking questions.$"

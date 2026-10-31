@@ -15,7 +15,17 @@ FuchsiaCity_PokemonCenter_1F_EventScript_Nurse::
 	end
 
 FuchsiaCity_PokemonCenter_1F_EventScript_Man::
-	msgbox FuchsiaCity_PokemonCenter_1F_Text_CantBecomeGoodTrainerWithOneMon, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_set FLAG_TEMP_NPC_TALKED, FuchsiaCity_PokemonCenter_1F_EventScript_Man_Bonus
+	msgbox FuchsiaCity_PokemonCenter_1F_Text_CantBecomeGoodTrainerWithOneMon
+	setflag FLAG_TEMP_NPC_TALKED
+	release
+	end
+
+FuchsiaCity_PokemonCenter_1F_EventScript_Man_Bonus::
+	msgbox FuchsiaCity_PokemonCenter_1F_Text_EveryoneIsWorthSomeTime
+	release
 	end
 
 FuchsiaCity_PokemonCenter_1F_EventScript_CooltrainerF::

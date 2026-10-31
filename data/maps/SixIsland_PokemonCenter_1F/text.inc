@@ -34,3 +34,10 @@ SixIsland_PokemonCenter_1F_Text_RivalImpossibleToGetAllMonsAroundHere::
     .string "That's that, then!\n"
     .string "Smell ya later!$"
 
+SixIsland_PokemonCenter_1F_Text_LookingIsHalfTheFun::
+    .string "People ask if I ever get tired of\n"
+    .string "looking.\p"
+    .string "Sure! But I found a great hat and\n"
+    .string "made three friends along the way.\p"
+    .string "The RUINS can wait. The looking's\n"
+    .string "half the fun!$"

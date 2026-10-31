@@ -6,7 +6,17 @@ PewterCity_Museum_2F_EventScript_Man::
 	end
 
 PewterCity_Museum_2F_EventScript_OldMan::
-	msgbox PewterCity_Museum_1F_Text_BoughtColorTVForMoonLanding, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_set FLAG_TEMP_NPC_TALKED, PewterCity_Museum_2F_EventScript_OldMan_Bonus
+	msgbox PewterCity_Museum_1F_Text_BoughtColorTVForMoonLanding
+	setflag FLAG_TEMP_NPC_TALKED
+	release
+	end
+
+PewterCity_Museum_2F_EventScript_OldMan_Bonus::
+	msgbox PewterCity_Museum_2F_Text_KeepAskingQuestions
+	release
 	end
 
 PewterCity_Museum_2F_EventScript_Scientist::

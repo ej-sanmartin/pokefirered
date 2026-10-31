@@ -15,7 +15,17 @@ SevenIsland_PokemonCenter_1F_EventScript_Nurse::
 	end
 
 SevenIsland_PokemonCenter_1F_EventScript_OldMan::
-	msgbox SevenIsland_PokemonCenter_1F_Text_EventsDependingOnConnections, MSGBOX_NPC
+	lock
+	faceplayer
+	msgbox SevenIsland_PokemonCenter_1F_Text_EventsDependingOnConnections
+	goto_if_set FLAG_TEMP_NPC_TALKED, SevenIsland_PokemonCenter_1F_EventScript_OldMan_Bonus
+	setflag FLAG_TEMP_NPC_TALKED
+	release
+	end
+
+SevenIsland_PokemonCenter_1F_EventScript_OldMan_Bonus::
+	msgbox SevenIsland_PokemonCenter_1F_Text_BestConnections
+	release
 	end
 
 SevenIsland_PokemonCenter_1F_EventScript_Sailor::

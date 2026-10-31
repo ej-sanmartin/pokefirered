@@ -43,6 +43,9 @@
 #define FLAG_TEMP_1F     (TEMP_FLAGS_START + 0x1F)
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 
+// Set after an NPC's first conversation on this map; cleared on map load.
+#define FLAG_TEMP_NPC_TALKED FLAG_TEMP_1
+
 #define FLAG_0x020               0x020
 #define FLAG_0x021               0x021
 #define FLAG_0x022               0x022
