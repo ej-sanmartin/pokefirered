@@ -8348,6 +8348,10 @@ static void SetObjectEventSpriteOamTableForLongGrass(struct ObjectEvent *objEven
     if (objEvent->disableCoveringGroundEffects)
         return;
 
+    // Mod: Mew keeps its own look (see SetMewAboveGrass).
+    if (ObjectEventIsFarawayIslandMew(objEvent))
+        return;
+
     if (!MetatileBehavior_IsLongGrass(objEvent->currentMetatileBehavior))
         return;
 
