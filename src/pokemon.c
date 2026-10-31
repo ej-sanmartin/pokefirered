@@ -64,7 +64,6 @@ EWRAM_DATA struct SpriteTemplate gMultiuseSpriteTemplate = {0};
 static EWRAM_DATA struct MonSpritesGfxManager *sMonSpritesGfxManager = NULL;
 
 static union PokemonSubstruct *GetSubstruct(struct BoxPokemon *boxMon, u32 personality, u8 substructType);
-static u16 GetDeoxysStat(struct Pokemon *mon, s32 statId);
 static bool8 IsShinyOtIdPersonality(u32 otId, u32 personality);
 static u16 ModifyStatByNature(u8 nature, u16 n, u8 statIndex);
 static u8 GetNatureFromPersonality(u32 personality);
@@ -353,9 +352,9 @@ static const u16 sSpeciesToHoennPokedexNum[NUM_SPECIES - 1] =
     SPECIES_TO_HOENN(LUGIA),
     SPECIES_TO_HOENN(HO_OH),
     SPECIES_TO_HOENN(CELEBI),
-    SPECIES_TO_HOENN(OLD_UNOWN_B),
-    SPECIES_TO_HOENN(OLD_UNOWN_C),
-    SPECIES_TO_HOENN(OLD_UNOWN_D),
+    [SPECIES_DEOXYS_ATTACK - 1] = HOENN_DEX_OLD_UNOWN_B,
+    [SPECIES_DEOXYS_DEFENSE - 1] = HOENN_DEX_OLD_UNOWN_C,
+    [SPECIES_DEOXYS_SPEED - 1] = HOENN_DEX_OLD_UNOWN_D,
     SPECIES_TO_HOENN(OLD_UNOWN_E),
     SPECIES_TO_HOENN(OLD_UNOWN_F),
     SPECIES_TO_HOENN(OLD_UNOWN_G),
@@ -769,9 +768,9 @@ static const u16 sSpeciesToNationalPokedexNum[NUM_SPECIES - 1] =
     SPECIES_TO_NATIONAL(LUGIA),
     SPECIES_TO_NATIONAL(HO_OH),
     SPECIES_TO_NATIONAL(CELEBI),
-    SPECIES_TO_NATIONAL(OLD_UNOWN_B),
-    SPECIES_TO_NATIONAL(OLD_UNOWN_C),
-    SPECIES_TO_NATIONAL(OLD_UNOWN_D),
+    [SPECIES_DEOXYS_ATTACK - 1] = NATIONAL_DEX_DEOXYS,
+    [SPECIES_DEOXYS_DEFENSE - 1] = NATIONAL_DEX_DEOXYS,
+    [SPECIES_DEOXYS_SPEED - 1] = NATIONAL_DEX_DEOXYS,
     SPECIES_TO_NATIONAL(OLD_UNOWN_E),
     SPECIES_TO_NATIONAL(OLD_UNOWN_F),
     SPECIES_TO_NATIONAL(OLD_UNOWN_G),
@@ -1636,30 +1635,6 @@ static const u16 sHMMoves[] =
     MOVE_CUT, MOVE_FLY, MOVE_SURF, MOVE_STRENGTH, MOVE_FLASH,
     MOVE_ROCK_SMASH, MOVE_WATERFALL, MOVE_DIVE, HM_MOVES_END
 };
-
-#if defined(FIRERED)
-// Attack forme
-static const u16 sDeoxysBaseStats[] = 
-{
-    [STAT_HP]    = 50,
-    [STAT_ATK]   = 180,
-    [STAT_DEF]   = 20,
-    [STAT_SPEED] = 150,
-    [STAT_SPATK] = 180,
-    [STAT_SPDEF] = 20,
-};
-#elif defined(LEAFGREEN)
-// Defense forme
-static const u16 sDeoxysBaseStats[] =
-{
-    [STAT_HP]    = 50,
-    [STAT_ATK]   = 70,
-    [STAT_DEF]   = 160,
-    [STAT_SPEED] = 90,
-    [STAT_SPATK] = 70,
-    [STAT_SPDEF] = 160,
-};
-#endif
 
 // The classes used by other players in the Union Room.
 // These should correspond with the overworld graphics in sUnionRoomObjGfxIds
@@ -2918,29 +2893,19 @@ u32 GetMonData3(struct Pokemon *mon, s32 field, u8 *data)
         ret = mon->maxHP;
         break;
     case MON_DATA_ATK:
-        ret = GetDeoxysStat(mon, STAT_ATK);
-        if (!ret)
-            ret = mon->attack;
+        ret = mon->attack;
         break;
     case MON_DATA_DEF:
-        ret = GetDeoxysStat(mon, STAT_DEF);
-        if (!ret)
-            ret = mon->defense;
+        ret = mon->defense;
         break;
     case MON_DATA_SPEED:
-        ret = GetDeoxysStat(mon, STAT_SPEED);
-        if (!ret)
-            ret = mon->speed;
+        ret = mon->speed;
         break;
     case MON_DATA_SPATK:
-        ret = GetDeoxysStat(mon, STAT_SPATK);
-        if (!ret)
-            ret = mon->spAttack;
+        ret = mon->spAttack;
         break;
     case MON_DATA_SPDEF:
-        ret = GetDeoxysStat(mon, STAT_SPDEF);
-        if (!ret)
-            ret = mon->spDefense;
+        ret = mon->spDefense;
         break;
     case MON_DATA_ATK2:
         ret = mon->attack;
@@ -5178,6 +5143,10 @@ u16 NationalPokedexNumToSpecies(u16 nationalNum)
     if (!nationalNum)
         return 0;
 
+    // The extra Deoxys formes share this number but sit in earlier slots.
+    if (nationalNum == NATIONAL_DEX_DEOXYS)
+        return SPECIES_DEOXYS;
+
     species = 0;
 
     while (species < NUM_SPECIES - 1 && sSpeciesToNationalPokedexNum[species] != nationalNum)
@@ -5207,6 +5176,25 @@ static u16 NationalToHoennOrder(u16 nationalNum)
     return hoennNum + 1;
 }
 
+// Mod: returns the forme a Meteorite turns this Deoxys into
+// (Normal > Attack > Defense > Speed > Normal), or SPECIES_NONE otherwise.
+u16 GetNextDeoxysForm(u16 species)
+{
+    switch (species)
+    {
+    case SPECIES_DEOXYS:
+        return SPECIES_DEOXYS_ATTACK;
+    case SPECIES_DEOXYS_ATTACK:
+        return SPECIES_DEOXYS_DEFENSE;
+    case SPECIES_DEOXYS_DEFENSE:
+        return SPECIES_DEOXYS_SPEED;
+    case SPECIES_DEOXYS_SPEED:
+        return SPECIES_DEOXYS;
+    default:
+        return SPECIES_NONE;
+    }
+}
+
 u16 SpeciesToNationalPokedexNum(u16 species)
 {
     if (!species)
@@ -5233,7 +5221,11 @@ u16 HoennToNationalOrder(u16 hoennNum)
 
 u16 SpeciesToCryId(u16 species)
 {
-    if (species < SPECIES_OLD_UNOWN_B - 1)
+    // Every Deoxys forme shares Deoxys' cry.
+    if (species >= SPECIES_DEOXYS_ATTACK - 1 && species <= SPECIES_DEOXYS_SPEED - 1)
+        species = SPECIES_DEOXYS - 1;
+
+    if (species < SPECIES_DEOXYS_ATTACK - 1)
         return species;
 
     if (species <= SPECIES_OLD_UNOWN_Z - 1)
@@ -6152,46 +6144,6 @@ bool8 ShouldIgnoreDeoxysForm(u8 caseId, u8 battlerId)
     }
 
     return TRUE;
-}
-
-static u16 GetDeoxysStat(struct Pokemon *mon, s32 statId)
-{
-    s32 ivVal, evVal;
-    u16 statValue = 0;
-    u8 nature;
-
-    if (gBattleTypeFlags & BATTLE_TYPE_LINK_IN_BATTLE || GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_DEOXYS)
-        return 0;
-
-    ivVal = GetMonData(mon, MON_DATA_HP_IV + statId, NULL);
-    evVal = GetMonData(mon, MON_DATA_HP_EV + statId, NULL);
-    statValue = ((sDeoxysBaseStats[statId] * 2 + ivVal + evVal / 4) * mon->level) / 100 + 5;
-    nature = GetNature(mon);
-    statValue = ModifyStatByNature(nature, statValue, (u8)statId);
-    return statValue;
-}
-
-void SetDeoxysStats(void)
-{
-    s32 i, value;
-
-    for (i = 0; i < PARTY_SIZE; i++)
-    {
-        struct Pokemon *mon = &gPlayerParty[i];
-
-        if (GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_DEOXYS)
-            continue;
-        value = GetMonData(mon, MON_DATA_ATK, NULL);
-        SetMonData(mon, MON_DATA_ATK, &value);
-        value = GetMonData(mon, MON_DATA_DEF, NULL);
-        SetMonData(mon, MON_DATA_DEF, &value);
-        value = GetMonData(mon, MON_DATA_SPEED, NULL);
-        SetMonData(mon, MON_DATA_SPEED, &value);
-        value = GetMonData(mon, MON_DATA_SPATK, NULL);
-        SetMonData(mon, MON_DATA_SPATK, &value);
-        value = GetMonData(mon, MON_DATA_SPDEF, NULL);
-        SetMonData(mon, MON_DATA_SPDEF, &value);
-    }
 }
 
 u16 GetUnionRoomTrainerPic(void)

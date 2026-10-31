@@ -145,6 +145,7 @@ const u16 gObjectEventPic_NidoranF[] = INCBIN_U16("graphics/object_events/pics/p
 const u16 gObjectEventPic_NidoranM[] = INCBIN_U16("graphics/object_events/pics/pokemon/nidoran_m.4bpp");
 const u16 gObjectEventPic_Nidorino[] = INCBIN_U16("graphics/object_events/pics/pokemon/nidorino.4bpp");
 const u16 gObjectEventPic_Meowth[] = INCBIN_U16("graphics/object_events/pics/pokemon/meowth.4bpp");
+const u16 gObjectEventPic_Husky[] = INCBIN_U16("graphics/object_events/pics/pokemon/husky.4bpp");
 const u16 gObjectEventPic_Seel[] = INCBIN_U16("graphics/object_events/pics/pokemon/seel.4bpp");
 const u16 gObjectEventPic_Voltorb[] = INCBIN_U16("graphics/object_events/pics/pokemon/voltorb.4bpp");
 const u16 gObjectEventPic_Slowpoke[] = INCBIN_U16("graphics/object_events/pics/pokemon/slowpoke.4bpp");

@@ -31,6 +31,14 @@ PalletTown_PlayersHouse_1F_EventScript_Nick::
 	release
 	end
 
+@ Mod: Boston, the player's husky, paces back and forth in the living room.
+PalletTown_PlayersHouse_1F_EventScript_Boston::
+	lock
+	faceplayer
+	msgbox PalletTown_PlayersHouse_1F_Text_Boston
+	release
+	end
+
 PalletTown_PlayersHouse_1F_EventScript_MomHeal::
 	msgbox PalletTown_PlayersHouse_1F_Text_YouShouldTakeQuickRest
 	closemessage
@@ -68,34 +76,33 @@ PalletTown_PlayersHouse_1F_EventScript_TVScreenFemale::
 @ Mod: once the player is Champion, Mom gives a one-time gift of the two event
 @ tickets (not obtainable in vanilla). The National Dex (Oak) and the Rainbow
 @ Pass (Celio) are left to their normal sources.
+@ Each ticket is only given if the Key Items pocket has room; otherwise Mom
+@ asks the player to make space and the gift stays available for next time.
 PalletTown_PlayersHouse_1F_EventScript_MomChampion::
 	goto_if_set FLAG_GOT_MOM_POSTGAME_GIFT, PalletTown_PlayersHouse_1F_EventScript_MomHeal
 	msgbox PalletTown_PlayersHouse_1F_Text_MomYouAreChampion
-	call PalletTown_PlayersHouse_1F_EventScript_GiveMysticTicket
-	call PalletTown_PlayersHouse_1F_EventScript_GiveAuroraTicket
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	playfanfare MUS_OBTAIN_KEY_ITEM
-	message PalletTown_PlayersHouse_1F_Text_ObtainedTheTickets
-	waitmessage
-	waitfanfare
-	call EventScript_RestorePrevTextColor
+	checkitem ITEM_MYSTIC_TICKET
+	goto_if_eq VAR_RESULT, TRUE, PalletTown_PlayersHouse_1F_EventScript_MomGiveAurora
+	checkitemspace ITEM_MYSTIC_TICKET
+	goto_if_eq VAR_RESULT, FALSE, PalletTown_PlayersHouse_1F_EventScript_MomBagFull
+	giveitem_msg PalletTown_PlayersHouse_1F_Text_ObtainedMysticTicket, ITEM_MYSTIC_TICKET, 1, MUS_OBTAIN_KEY_ITEM
+PalletTown_PlayersHouse_1F_EventScript_MomGiveAurora::
+	checkitem ITEM_AURORA_TICKET
+	goto_if_eq VAR_RESULT, TRUE, PalletTown_PlayersHouse_1F_EventScript_MomGiftDone
+	checkitemspace ITEM_AURORA_TICKET
+	goto_if_eq VAR_RESULT, FALSE, PalletTown_PlayersHouse_1F_EventScript_MomBagFull
+	giveitem_msg PalletTown_PlayersHouse_1F_Text_ObtainedAuroraTicket, ITEM_AURORA_TICKET, 1, MUS_OBTAIN_KEY_ITEM
+PalletTown_PlayersHouse_1F_EventScript_MomGiftDone::
+	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
+	setflag FLAG_RECEIVED_MYSTIC_TICKET
+	setflag FLAG_ENABLE_SHIP_BIRTH_ISLAND
+	setflag FLAG_RECEIVED_AURORA_TICKET
 	setflag FLAG_GOT_MOM_POSTGAME_GIFT
 	msgbox PalletTown_PlayersHouse_1F_Text_MomEnjoyTheIslands
 	goto PalletTown_PlayersHouse_1F_EventScript_MomHeal
 	end
 
-PalletTown_PlayersHouse_1F_EventScript_GiveMysticTicket::
-	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
-	setflag FLAG_RECEIVED_MYSTIC_TICKET
-	checkitem ITEM_MYSTIC_TICKET
-	goto_if_eq VAR_RESULT, TRUE, EventScript_Return
-	additem ITEM_MYSTIC_TICKET
-	return
-
-PalletTown_PlayersHouse_1F_EventScript_GiveAuroraTicket::
-	setflag FLAG_ENABLE_SHIP_BIRTH_ISLAND
-	setflag FLAG_RECEIVED_AURORA_TICKET
-	checkitem ITEM_AURORA_TICKET
-	goto_if_eq VAR_RESULT, TRUE, EventScript_Return
-	additem ITEM_AURORA_TICKET
-	return
+PalletTown_PlayersHouse_1F_EventScript_MomBagFull::
+	msgbox PalletTown_PlayersHouse_1F_Text_MomBagFull
+	goto PalletTown_PlayersHouse_1F_EventScript_MomHeal
+	end

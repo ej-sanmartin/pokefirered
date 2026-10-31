@@ -278,9 +278,9 @@ const u8 *const gMonIconTable[] = {
     [SPECIES_LUGIA]       = gMonIcon_Lugia,
     [SPECIES_HO_OH]       = gMonIcon_HoOh,
     [SPECIES_CELEBI]      = gMonIcon_Celebi,
-    [SPECIES_OLD_UNOWN_B] = gMonIcon_QuestionMark,
-    [SPECIES_OLD_UNOWN_C] = gMonIcon_QuestionMark,
-    [SPECIES_OLD_UNOWN_D] = gMonIcon_QuestionMark,
+    [SPECIES_DEOXYS_ATTACK] = gMonIcon_DeoxysAttack,
+    [SPECIES_DEOXYS_DEFENSE] = gMonIcon_DeoxysDefense,
+    [SPECIES_DEOXYS_SPEED] = gMonIcon_DeoxysSpeed,
     [SPECIES_OLD_UNOWN_E] = gMonIcon_QuestionMark,
     [SPECIES_OLD_UNOWN_F] = gMonIcon_QuestionMark,
     [SPECIES_OLD_UNOWN_G] = gMonIcon_QuestionMark,
@@ -721,9 +721,9 @@ const u8 gMonIconPaletteIndices[] = {
     [SPECIES_LUGIA]       = 0,
     [SPECIES_HO_OH]       = 1,
     [SPECIES_CELEBI]      = 1,
-    [SPECIES_OLD_UNOWN_B] = 0,
-    [SPECIES_OLD_UNOWN_C] = 0,
-    [SPECIES_OLD_UNOWN_D] = 0,
+    [SPECIES_DEOXYS_ATTACK] = 0,
+    [SPECIES_DEOXYS_DEFENSE] = 0,
+    [SPECIES_DEOXYS_SPEED] = 0,
     [SPECIES_OLD_UNOWN_E] = 0,
     [SPECIES_OLD_UNOWN_F] = 0,
     [SPECIES_OLD_UNOWN_G] = 0,
@@ -1107,10 +1107,7 @@ u16 MailSpeciesToIconSpecies(u16 species)
 
 const u8 *GetMonIconTiles(u16 species, bool32 extra)
 {
-    const u8 *iconSprite = gMonIconTable[species];
-    if (species == SPECIES_DEOXYS && extra == TRUE)
-        iconSprite += 0x400;
-    return iconSprite;
+    return gMonIconTable[species];
 }
 
 const u8 *GetMonIconPtr(u16 species, u32 personality, bool32 extra)

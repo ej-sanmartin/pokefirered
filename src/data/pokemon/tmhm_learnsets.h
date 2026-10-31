@@ -1,6 +1,45 @@
 #define TMHM_LEARNSET(moves) {(u32)(moves), ((u64)(moves) >> 32)}
 #define TMHM(tmhm) ((u64)1 << (ITEM_##tmhm - ITEM_TM01_FOCUS_PUNCH))
 
+// Mod: every Deoxys forme learns the same machines.
+#define DEOXYS_TMHM_LEARNSET \
+TMHM_LEARNSET(TMHM(TM01_FOCUS_PUNCH) \
+                                        | TMHM(TM03_WATER_PULSE) \
+                                        | TMHM(TM04_CALM_MIND) \
+                                        | TMHM(TM06_TOXIC) \
+                                        | TMHM(TM10_HIDDEN_POWER) \
+                                        | TMHM(TM11_SUNNY_DAY) \
+                                        | TMHM(TM12_TAUNT) \
+                                        | TMHM(TM13_ICE_BEAM) \
+                                        | TMHM(TM15_HYPER_BEAM) \
+                                        | TMHM(TM16_LIGHT_SCREEN) \
+                                        | TMHM(TM17_PROTECT) \
+                                        | TMHM(TM18_RAIN_DANCE) \
+                                        | TMHM(TM20_SAFEGUARD) \
+                                        | TMHM(TM21_FRUSTRATION) \
+                                        | TMHM(TM22_SOLAR_BEAM) \
+                                        | TMHM(TM24_THUNDERBOLT) \
+                                        | TMHM(TM25_THUNDER) \
+                                        | TMHM(TM27_RETURN) \
+                                        | TMHM(TM29_PSYCHIC) \
+                                        | TMHM(TM30_SHADOW_BALL) \
+                                        | TMHM(TM31_BRICK_BREAK) \
+                                        | TMHM(TM32_DOUBLE_TEAM) \
+                                        | TMHM(TM33_REFLECT) \
+                                        | TMHM(TM34_SHOCK_WAVE) \
+                                        | TMHM(TM39_ROCK_TOMB) \
+                                        | TMHM(TM40_AERIAL_ACE) \
+                                        | TMHM(TM41_TORMENT) \
+                                        | TMHM(TM42_FACADE) \
+                                        | TMHM(TM43_SECRET_POWER) \
+                                        | TMHM(TM44_REST) \
+                                        | TMHM(TM48_SKILL_SWAP) \
+                                        | TMHM(TM49_SNATCH) \
+                                        | TMHM(HM01_CUT) \
+                                        | TMHM(HM04_STRENGTH) \
+                                        | TMHM(HM05_FLASH) \
+                                        | TMHM(HM06_ROCK_SMASH))
+
 // This table determines which TMs and HMs a species is capable of learning.
 // Each entry is a 64-bit bit array spread across two 32-bit values, with
 // each bit corresponding to a machine.
@@ -6055,12 +6094,6 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(HM01_CUT)
                                         | TMHM(HM05_FLASH)),
 
-    [SPECIES_OLD_UNOWN_B] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_C] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_D] = TMHM_LEARNSET(0),
-
     [SPECIES_OLD_UNOWN_E] = TMHM_LEARNSET(0),
 
     [SPECIES_OLD_UNOWN_F] = TMHM_LEARNSET(0),
@@ -9323,42 +9356,10 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM48_SKILL_SWAP)
                                         | TMHM(HM05_FLASH)),
 
-    [SPECIES_DEOXYS]      = TMHM_LEARNSET(TMHM(TM01_FOCUS_PUNCH)
-                                        | TMHM(TM03_WATER_PULSE)
-                                        | TMHM(TM04_CALM_MIND)
-                                        | TMHM(TM06_TOXIC)
-                                        | TMHM(TM10_HIDDEN_POWER)
-                                        | TMHM(TM11_SUNNY_DAY)
-                                        | TMHM(TM12_TAUNT)
-                                        | TMHM(TM13_ICE_BEAM)
-                                        | TMHM(TM15_HYPER_BEAM)
-                                        | TMHM(TM16_LIGHT_SCREEN)
-                                        | TMHM(TM17_PROTECT)
-                                        | TMHM(TM18_RAIN_DANCE)
-                                        | TMHM(TM20_SAFEGUARD)
-                                        | TMHM(TM21_FRUSTRATION)
-                                        | TMHM(TM22_SOLAR_BEAM)
-                                        | TMHM(TM24_THUNDERBOLT)
-                                        | TMHM(TM25_THUNDER)
-                                        | TMHM(TM27_RETURN)
-                                        | TMHM(TM29_PSYCHIC)
-                                        | TMHM(TM30_SHADOW_BALL)
-                                        | TMHM(TM31_BRICK_BREAK)
-                                        | TMHM(TM32_DOUBLE_TEAM)
-                                        | TMHM(TM33_REFLECT)
-                                        | TMHM(TM34_SHOCK_WAVE)
-                                        | TMHM(TM39_ROCK_TOMB)
-                                        | TMHM(TM40_AERIAL_ACE)
-                                        | TMHM(TM41_TORMENT)
-                                        | TMHM(TM42_FACADE)
-                                        | TMHM(TM43_SECRET_POWER)
-                                        | TMHM(TM44_REST)
-                                        | TMHM(TM48_SKILL_SWAP)
-                                        | TMHM(TM49_SNATCH)
-                                        | TMHM(HM01_CUT)
-                                        | TMHM(HM04_STRENGTH)
-                                        | TMHM(HM05_FLASH)
-                                        | TMHM(HM06_ROCK_SMASH)),
+    [SPECIES_DEOXYS]      = DEOXYS_TMHM_LEARNSET,
+    [SPECIES_DEOXYS_ATTACK] = DEOXYS_TMHM_LEARNSET,
+    [SPECIES_DEOXYS_DEFENSE] = DEOXYS_TMHM_LEARNSET,
+    [SPECIES_DEOXYS_SPEED] = DEOXYS_TMHM_LEARNSET,
 
     [SPECIES_CHIMECHO]    = TMHM_LEARNSET(TMHM(TM04_CALM_MIND)
                                         | TMHM(TM06_TOXIC)

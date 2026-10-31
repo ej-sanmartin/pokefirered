@@ -3508,21 +3508,6 @@ static const u16 sCelebiLevelUpLearnset[] = {
     LEVEL_UP_END
 };
 
-static const u16 sSpecies252LevelUpLearnset[] = {
-    LEVEL_UP_MOVE(1, MOVE_TACKLE),
-    LEVEL_UP_END
-};
-
-static const u16 sSpecies253LevelUpLearnset[] = {
-    LEVEL_UP_MOVE(1, MOVE_TACKLE),
-    LEVEL_UP_END
-};
-
-static const u16 sSpecies254LevelUpLearnset[] = {
-    LEVEL_UP_MOVE(1, MOVE_TACKLE),
-    LEVEL_UP_END
-};
-
 static const u16 sSpecies255LevelUpLearnset[] = {
     LEVEL_UP_MOVE(1, MOVE_TACKLE),
     LEVEL_UP_END
@@ -5657,7 +5642,7 @@ static const u16 sJirachiLevelUpLearnset[] = {
     LEVEL_UP_END
 };
 
-#if defined(FIRERED)
+// Mod: Normal, Attack and Speed use the offensive list; Defense its own.
 static const u16 sDeoxysLevelUpLearnset[] = {
     LEVEL_UP_MOVE(1, MOVE_LEER),
     LEVEL_UP_MOVE(1, MOVE_WRAP),
@@ -5673,8 +5658,8 @@ static const u16 sDeoxysLevelUpLearnset[] = {
     LEVEL_UP_MOVE(50, MOVE_HYPER_BEAM),
     LEVEL_UP_END
 };
-#elif defined(LEAFGREEN)
-static const u16 sDeoxysLevelUpLearnset[] = {
+
+static const u16 sDeoxysDefenseLevelUpLearnset[] = {
     LEVEL_UP_MOVE(1, MOVE_LEER),
     LEVEL_UP_MOVE(1, MOVE_WRAP),
     LEVEL_UP_MOVE(5, MOVE_NIGHT_SHADE),
@@ -5691,7 +5676,6 @@ static const u16 sDeoxysLevelUpLearnset[] = {
     LEVEL_UP_MOVE(50, MOVE_MIRROR_COAT),
     LEVEL_UP_END
 };
-#endif
 
 static const u16 sChimechoLevelUpLearnset[] = {
     LEVEL_UP_MOVE(1, MOVE_WRAP),

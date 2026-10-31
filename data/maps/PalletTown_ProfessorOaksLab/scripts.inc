@@ -1351,6 +1351,14 @@ PalletTown_ProfessorOaksLab_EventScript_Aide3::
 	lock
 	faceplayer
 	famechecker FAMECHECKER_OAK, 2
+	@ Mod: hint at the rival's starter that roams Route 1 after the Elite Four.
+	goto_if_unset FLAG_SYS_GAME_CLEAR, PalletTown_ProfessorOaksLab_EventScript_Aide3Normal
+	goto_if_set FLAG_CAUGHT_ROUTE1_STARTER, PalletTown_ProfessorOaksLab_EventScript_Aide3Normal
+	msgbox PalletTown_ProfessorOaksLab_Text_RareMonOnRoute1
+	release
+	end
+
+PalletTown_ProfessorOaksLab_EventScript_Aide3Normal::
 	msgbox PalletTown_ProfessorOaksLab_Text_OakIsAuthorityOnMons
 	release
 	end

@@ -45,10 +45,23 @@ PalletTown_PlayersHouse_1F_Text_MomYouAreChampion::
     .string "I got something special for you\n"
     .string "for all your hard work!$"
 
-PalletTown_PlayersHouse_1F_Text_ObtainedTheTickets::
+PalletTown_PlayersHouse_1F_Text_Boston::
+    .string "{PLAYER} petted BOSTON.\p"
+    .string "My dog BOSTON is in his\n"
+    .string "happy house.$"
+
+PalletTown_PlayersHouse_1F_Text_ObtainedMysticTicket::
     .string "{PLAYER} obtained the\n"
-    .string "MYSTIC TICKET and\n"
+    .string "MYSTIC TICKET!$"
+
+PalletTown_PlayersHouse_1F_Text_ObtainedAuroraTicket::
+    .string "{PLAYER} obtained the\n"
     .string "AURORA TICKET!$"
+
+PalletTown_PlayersHouse_1F_Text_MomBagFull::
+    .string "MOM: Oh dear, your BAG is full!\p"
+    .string "Make some room for the TICKETS\n"
+    .string "and come talk to me again.$"
 
 PalletTown_PlayersHouse_1F_Text_MomEnjoyTheIslands::
     .string "Use them on the ferry at VERMILION.\n"

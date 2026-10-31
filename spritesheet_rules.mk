@@ -352,6 +352,9 @@ $(OBJEVENTGFXDIR)/pokemon/machop.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/pokemon/meowth.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 
+$(OBJEVENTGFXDIR)/pokemon/husky.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2
+
 $(OBJEVENTGFXDIR)/pokemon/nidoran_f.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 

@@ -5305,6 +5305,33 @@ void ItemUseCB_EvolutionStone(u8 taskId, TaskFunc func)
         Task_DoUseItemAnim(taskId);
 }
 
+// Mod: a METEOR SHARD cycles a Deoxys through its formes. Stats are
+// recalculated from the new forme's base stats; the item is not consumed.
+void ItemUseCB_MeteorShard(u8 taskId, TaskFunc func)
+{
+    struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+    u16 nextForm = GetNextDeoxysForm(GetMonData(mon, MON_DATA_SPECIES));
+
+    PlaySE(SE_SELECT);
+    if (nextForm == SPECIES_NONE)
+    {
+        gPartyMenuUseExitCallback = FALSE;
+        DisplayPartyMenuMessage(gText_WontHaveEffect, TRUE);
+    }
+    else
+    {
+        SetMonData(mon, MON_DATA_SPECIES, &nextForm);
+        CalculateMonStats(mon);
+        gPartyMenuUseExitCallback = TRUE;
+        PlaySE(SE_USE_ITEM);
+        GetMonNickname(mon, gStringVar1);
+        StringExpandPlaceholders(gStringVar4, gText_PkmnChangedForm);
+        DisplayPartyMenuMessage(gStringVar4, TRUE);
+    }
+    ScheduleBgCopyTilemapToVram(2);
+    gTasks[taskId].func = func;
+}
+
 static void CB2_UseEvolutionStone(void)
 {
     gCB2_AfterEvolution = gPartyMenu.exitCallback;

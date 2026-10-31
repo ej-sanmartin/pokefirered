@@ -399,6 +399,7 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_RUBY]           = {gItemIcon_Gem, gItemIconPalette_Ruby},
     [ITEM_SAPPHIRE]       = {gItemIcon_Gem, gItemIconPalette_Sapphire},
     [ITEM_OLD_SEA_MAP]    = {gItemIcon_OldSeaMap, gItemIconPalette_OldSeaMap},
+    [ITEM_METEOR_SHARD]   = {gItemIcon_MeteorShard, gItemIconPalette_MeteorShard},
     // Return to field arrow
     [ITEMS_COUNT]         = {gItemIcon_ReturnToFieldArrow, gItemIconPalette_ReturnToFieldArrow},
 };

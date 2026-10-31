@@ -14,6 +14,7 @@
 #include "link.h"
 #include "quest_log.h"
 #include "constants/maps.h"
+#include "constants/battle.h"
 #include "constants/abilities.h"
 #include "constants/items.h"
 
@@ -298,6 +299,57 @@ static const struct WildPokemon * PickWildMon(const struct WildPokemonInfo * inf
     return mon;
 }
 
+// Mod: after the Elite Four, the rival's starter turns up in Route 1 grass
+// until the player catches it. Beating it or running only brings it back.
+#define ROUTE1_STARTER_CHANCE   8   // 1 in N land encounters on Route 1
+#define ROUTE1_STARTER_LEVEL    5
+
+static EWRAM_DATA bool8 sRoute1StarterBattle = FALSE;
+
+// Returns the species the rival picked: the one strong against the
+// player's starter (VAR_STARTER_MON: 0 Bulbasaur, 1 Squirtle, 2 Charmander).
+static u16 GetRivalStarterSpecies(void)
+{
+    switch (VarGet(VAR_STARTER_MON))
+    {
+    case 0:
+        return SPECIES_CHARMANDER;
+    case 1:
+        return SPECIES_BULBASAUR;
+    default:
+        return SPECIES_SQUIRTLE;
+    }
+}
+
+// Tries to turn the current Route 1 land encounter into the rival's starter.
+// Returns TRUE if it generated that mon.
+static bool8 TryRoute1StarterEncounter(void)
+{
+    sRoute1StarterBattle = FALSE;
+    if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(MAP_ROUTE1)
+     || gSaveBlock1Ptr->location.mapNum != MAP_NUM(MAP_ROUTE1))
+        return FALSE;
+    if (!FlagGet(FLAG_SYS_GAME_CLEAR) || FlagGet(FLAG_CAUGHT_ROUTE1_STARTER))
+        return FALSE;
+    if (Random() % ROUTE1_STARTER_CHANCE != 0)
+        return FALSE;
+    if (!IsWildLevelAllowedByRepel(ROUTE1_STARTER_LEVEL))
+        return FALSE;
+    GenerateWildMon(GetRivalStarterSpecies(), ROUTE1_STARTER_LEVEL, 0);
+    sRoute1StarterBattle = TRUE;
+    return TRUE;
+}
+
+// Called after every non-link battle. Catching the Route 1 starter stops
+// it from appearing again.
+void Route1StarterBattleEnded(u8 outcome)
+{
+    if (sRoute1StarterBattle && outcome == B_OUTCOME_CAUGHT
+     && GetMonData(&gEnemyParty[0], MON_DATA_SPECIES) == GetRivalStarterSpecies())
+        FlagSet(FLAG_CAUGHT_ROUTE1_STARTER);
+    sRoute1StarterBattle = FALSE;
+}
+
 static bool8 TryGenerateWildMon(const struct WildPokemonInfo * info, u8 area, u8 flags)
 {
     u8 slot = 0;
@@ -419,6 +471,11 @@ bool8 StandardWildEncounter(u32 currMetatileAttrs, u16 previousMetatileBehavior)
                 }
 
                 StartRoamerBattle();
+                return TRUE;
+            }
+            else if (TryRoute1StarterEncounter() == TRUE)
+            {
+                StartWildBattle();
                 return TRUE;
             }
             else

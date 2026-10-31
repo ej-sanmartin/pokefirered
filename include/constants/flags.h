@@ -1225,10 +1225,10 @@
 #define FLAG_GOT_MOM_POSTGAME_GIFT      0x4A7 // Mod: Mom's post-Elite Four gift
 #define FLAG_GOT_LEFTOVER_STARTER       0x4A8 // Mod: took the last Poke Ball in Oak's Lab
 #define FLAG_CAUGHT_ROUTE1_STARTER      0x4A9 // Mod: caught the rival's starter on Route 1
-#define FLAG_HIDE_ROUTE1_STARTER        0x4AA // Mod: hides the Route 1 starter object
+#define FLAG_HIDE_BIRTH_ISLAND_METEOR_SHARD 0x4AA
 #define FLAG_GOT_SECOND_FOSSIL          0x4AB // Mod: took the other Mt. Moon fossil
 #define FLAG_HIDE_MEW                   0x4AC // Mod: hides Mew on Faraway Island
-#define FLAG_CAUGHT_MEW                 0x4AD // Mod: Mew was caught
+#define FLAG_FOUGHT_MEW                 0x4AD // Mod: Mew was caught or defeated
 #define FLAG_OAK_GAVE_OLD_SEA_MAP       0x4AE // Mod: Oak told the Mew story
 #define FLAG_UNUSED_0x4AF               0x4AF // Unused Flag
 

@@ -1357,6 +1357,19 @@ static const struct SpriteFrameImage sPicTable_Meowth[] = {
     overworld_frame(gObjectEventPic_Meowth, 2, 2, 2),
 };
 
+static const struct SpriteFrameImage sPicTable_Husky[] = {
+    overworld_frame(gObjectEventPic_Husky, 2, 2, 0),
+    overworld_frame(gObjectEventPic_Husky, 2, 2, 1),
+    overworld_frame(gObjectEventPic_Husky, 2, 2, 2),
+    // Walk frames 3-5 are the standing poses one pixel higher: a small hop.
+    overworld_frame(gObjectEventPic_Husky, 2, 2, 3),
+    overworld_frame(gObjectEventPic_Husky, 2, 2, 3),
+    overworld_frame(gObjectEventPic_Husky, 2, 2, 4),
+    overworld_frame(gObjectEventPic_Husky, 2, 2, 4),
+    overworld_frame(gObjectEventPic_Husky, 2, 2, 5),
+    overworld_frame(gObjectEventPic_Husky, 2, 2, 5),
+};
+
 static const struct SpriteFrameImage sPicTable_Seel[] = {
     overworld_frame(gObjectEventPic_Seel, 2, 2, 0),
     overworld_frame(gObjectEventPic_Seel, 2, 2, 1),

@@ -257,9 +257,11 @@
 #define SPECIES_HO_OH 250
 #define SPECIES_CELEBI 251
 
-#define SPECIES_OLD_UNOWN_B 252
-#define SPECIES_OLD_UNOWN_C 253
-#define SPECIES_OLD_UNOWN_D 254
+// Mod: the first three unused slots hold the extra Deoxys formes.
+// SPECIES_DEOXYS itself is the Normal forme.
+#define SPECIES_DEOXYS_ATTACK 252
+#define SPECIES_DEOXYS_DEFENSE 253
+#define SPECIES_DEOXYS_SPEED 254
 #define SPECIES_OLD_UNOWN_E 255
 #define SPECIES_OLD_UNOWN_F 256
 #define SPECIES_OLD_UNOWN_G 257
@@ -421,6 +423,11 @@
 #define SPECIES_EGG 412
 
 #define NUM_SPECIES SPECIES_EGG
+
+// True for Deoxys in any forme.
+#define IS_DEOXYS(species) \
+    ((species) == SPECIES_DEOXYS \
+     || ((species) >= SPECIES_DEOXYS_ATTACK && (species) <= SPECIES_DEOXYS_SPEED))
 
 #define SPECIES_UNOWN_B (NUM_SPECIES + 1)
 #define SPECIES_UNOWN_C (NUM_SPECIES + 2)

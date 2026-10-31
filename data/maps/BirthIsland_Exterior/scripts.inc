@@ -20,9 +20,21 @@ BirthIsland_Exterior_OnTransition::
 BirthIsland_Exterior_EventScript_HideDeoxysAndPuzzle::
 	setflag FLAG_HIDE_DEOXYS
 	setflag FLAG_HIDE_BIRTH_ISLAND_METEORITE
+	checkitem ITEM_METEOR_SHARD
+	goto_if_eq VAR_RESULT, FALSE, BirthIsland_Exterior_EventScript_ShowMeteorShard
 	return
 
+@ Mod: a shard of the meteorite is left behind once DEOXYS has been caught
+BirthIsland_Exterior_EventScript_ShowMeteorShard::
+	clearflag FLAG_HIDE_BIRTH_ISLAND_METEOR_SHARD
+	return
+
+BirthIsland_Exterior_EventScript_MeteorShard::
+	finditem ITEM_METEOR_SHARD
+	end
+
 BirthIsland_Exterior_EventScript_TryShowDeoxysPuzzle::
+	setflag FLAG_HIDE_BIRTH_ISLAND_METEOR_SHARD
 	goto_if_set FLAG_DEOXYS_FLEW_AWAY, EventScript_Return
 	clearflag FLAG_HIDE_BIRTH_ISLAND_METEORITE
 	clearflag FLAG_SYS_DEOXYS_AWAKENED

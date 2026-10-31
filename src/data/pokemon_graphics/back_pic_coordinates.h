@@ -1260,20 +1260,20 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = MON_COORDS_SIZE(48, 48),
         .y_offset = 8,
     },
-    [SPECIES_OLD_UNOWN_B] =
+    [SPECIES_DEOXYS_ATTACK] =
     {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
     },
-    [SPECIES_OLD_UNOWN_C] =
+    [SPECIES_DEOXYS_DEFENSE] =
     {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
     },
-    [SPECIES_OLD_UNOWN_D] =
+    [SPECIES_DEOXYS_SPEED] =
     {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
     },
     [SPECIES_OLD_UNOWN_E] =
     {

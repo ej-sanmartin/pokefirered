@@ -11,7 +11,8 @@ MtMoon_B2F_EventScript_OnTransitionEnd::
 	end
 
 @ Mod: the fossil nobody picked stays on the floor so it can be taken after
-@ the Elite Four (see MtMoon_B2F_EventScript_LeftoverFossil).
+@ the Elite Four (see MtMoon_B2F_EventScript_LeftoverDomeFossil and
+@ MtMoon_B2F_EventScript_LeftoverHelixFossil).
 MtMoon_B2F_EventScript_ShowLeftoverHelix::
 	clearflag FLAG_HIDE_HELIX_FOSSIL
 	return
@@ -128,6 +129,8 @@ MtMoon_B2F_EventScript_LeftoverDomeFossil::
 	goto_if_unset FLAG_SYS_GAME_CLEAR, MtMoon_B2F_EventScript_ComeBackForFossil
 	msgbox MtMoon_B2F_Text_YouWantDomeFossil, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, MtMoon_B2F_EventScript_DontTakeFossil
+	checkitemspace ITEM_DOME_FOSSIL
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
 	removeobject LOCALID_DOME_FOSSIL
 	giveitem_msg MtMoon_B2F_Text_ObtainedDomeFossil, ITEM_DOME_FOSSIL, 1, MUS_OBTAIN_KEY_ITEM
 	setflag FLAG_GOT_DOME_FOSSIL
@@ -139,6 +142,8 @@ MtMoon_B2F_EventScript_LeftoverHelixFossil::
 	goto_if_unset FLAG_SYS_GAME_CLEAR, MtMoon_B2F_EventScript_ComeBackForFossil
 	msgbox MtMoon_B2F_Text_YouWantHelixFossil, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, MtMoon_B2F_EventScript_DontTakeFossil
+	checkitemspace ITEM_HELIX_FOSSIL
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
 	removeobject LOCALID_HELIX_FOSSIL
 	giveitem_msg MtMoon_B2F_Text_ObtainedHelixFossil, ITEM_HELIX_FOSSIL, 1, MUS_OBTAIN_KEY_ITEM
 	setflag FLAG_GOT_HELIX_FOSSIL

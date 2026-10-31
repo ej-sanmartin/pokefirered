@@ -713,3 +713,5 @@ const u32 gItemIcon_Gem[] = INCBIN_U32("graphics/items/icons/gem.4bpp.lz");
 const u32 gItemIconPalette_Sapphire[] = INCBIN_U32("graphics/items/icon_palettes/sapphire.gbapal.lz");
 const u32 gItemIcon_OldSeaMap[] = INCBIN_U32("graphics/items/icons/old_sea_map.4bpp.lz");
 const u32 gItemIconPalette_OldSeaMap[] = INCBIN_U32("graphics/items/icons/old_sea_map.gbapal.lz");
+const u32 gItemIcon_MeteorShard[] = INCBIN_U32("graphics/items/icons/meteor_shard.4bpp.lz");
+const u32 gItemIconPalette_MeteorShard[] = INCBIN_U32("graphics/items/icons/meteor_shard.gbapal.lz");

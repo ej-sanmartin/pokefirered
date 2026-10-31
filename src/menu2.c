@@ -264,9 +264,9 @@ static const u8 sMonPosAttributes[][PSA_MON_ATTR_COUNT] = {
     [SPECIES_LUGIA           - 1] = { 8, 42,  8, 20, 52},
     [SPECIES_HO_OH           - 1] = {13, 37,  8, 14, 52},
     [SPECIES_CELEBI          - 1] = {21, 33,  8, 26, 43},
-    [SPECIES_OLD_UNOWN_B     - 1] = {31, 18,  8, 30, 28},
-    [SPECIES_OLD_UNOWN_C     - 1] = {32, 23,  8, 31, 33},
-    [SPECIES_OLD_UNOWN_D     - 1] = {28, 25,  8, 27, 35},
+    [SPECIES_DEOXYS_ATTACK   - 1] = {27,  8, 40, 28, 22},
+    [SPECIES_DEOXYS_DEFENSE  - 1] = {26,  9, 40, 26, 23},
+    [SPECIES_DEOXYS_SPEED    - 1] = {27,  8, 40, 28, 22},
     [SPECIES_OLD_UNOWN_E     - 1] = {33, 25,  8, 32, 35},
     [SPECIES_OLD_UNOWN_F     - 1] = {27, 19,  8, 26, 29},
     [SPECIES_OLD_UNOWN_G     - 1] = {32, 22,  8, 31, 33},
@@ -422,11 +422,7 @@ static const u8 sMonPosAttributes[][PSA_MON_ATTR_COUNT] = {
     [SPECIES_LATIAS          - 1] = {30, 12, 16, 35, 25},
     [SPECIES_LATIOS          - 1] = { 5, 14, 16,  5, 29},
     [SPECIES_JIRACHI         - 1] = {28, 21,  8, 30, 34},
-#if defined(FIRERED)
     [SPECIES_DEOXYS          - 1] = {27,  8, 40, 28, 22},
-#elif defined(LEAFGREEN)
-    [SPECIES_DEOXYS          - 1] = {26,  9, 40, 26, 23},
-#endif
     [SPECIES_CHIMECHO        - 1] = {29, 12,  8, 28, 26},
     [SPECIES_OLD_UNOWN_EMARK - 1] = {32, 33,  8, 32, 43},
     [SPECIES_OLD_UNOWN_QMARK - 1] = {32, 35,  8, 32, 45}
@@ -651,8 +647,13 @@ u8 Menu2_GetMonPosAttribute(u16 species, u32 personality, u8 attributeId)
         case 27:
             species = SPECIES_OLD_UNOWN_QMARK;
             break;
+        case 1:
+        case 2:
+        case 3:
+            // Slots for letters B-D hold Deoxys formes; use the A position.
+            break;
         default:
-            species = SPECIES_OLD_UNOWN_B + unownLetter - 1;
+            species = SPECIES_OLD_UNOWN_E + unownLetter - 4;
             break;
         }
     }

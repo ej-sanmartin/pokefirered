@@ -1243,9 +1243,10 @@ const u16 gPokedexOrder_Type[] =
     SPECIES_ZANGOOSE,
     SPECIES_CASTFORM,
     SPECIES_KECLEON,
-    SPECIES_OLD_UNOWN_B,
-    SPECIES_OLD_UNOWN_C,
-    SPECIES_OLD_UNOWN_D,
+    // Mod: B-D now hold Deoxys formes; keep the list length with placeholders.
+    SPECIES_OLD_UNOWN_E,
+    SPECIES_OLD_UNOWN_E,
+    SPECIES_OLD_UNOWN_E,
     SPECIES_OLD_UNOWN_E,
     SPECIES_OLD_UNOWN_F,
     SPECIES_OLD_UNOWN_G,

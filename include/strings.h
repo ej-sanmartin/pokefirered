@@ -379,6 +379,7 @@ extern const u8 gText_WhichMoveToForget[];
 extern const u8 gText_12PoofForgotMove[];
 extern const u8 gText_StopLearningMove2[];
 extern const u8 gText_MoveNotLearned[];
+extern const u8 gText_PkmnChangedForm[];
 extern const u8 gText_PkmnElevatedToLvVar2[];
 extern const u8 gText_PkmnHoldingItemCantHoldMail[];
 extern const u8 gText_MailTransferredFromMailbox[];

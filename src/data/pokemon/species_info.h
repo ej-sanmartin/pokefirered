@@ -32,6 +32,37 @@
         .noFlip = FALSE,                                               \
     }
 
+// Mod: Deoxys has one species per forme so each keeps its own stats and art.
+#define DEOXYS_SPECIES_INFO(hp, atk, def, spd, spatk, spdef)           \
+    {                                                                  \
+        .baseHP = hp,                                                  \
+        .baseAttack = atk,                                             \
+        .baseDefense = def,                                            \
+        .baseSpeed = spd,                                              \
+        .baseSpAttack = spatk,                                         \
+        .baseSpDefense = spdef,                                        \
+        .types = {TYPE_PSYCHIC, TYPE_PSYCHIC},                         \
+        .catchRate = 3,                                                \
+        .expYield = 215,                                               \
+        .evYield_HP = 0,                                               \
+        .evYield_Attack = 1,                                           \
+        .evYield_Defense = 0,                                          \
+        .evYield_Speed = 1,                                            \
+        .evYield_SpAttack = 1,                                         \
+        .evYield_SpDefense = 0,                                        \
+        .itemCommon = ITEM_NONE,                                       \
+        .itemRare = ITEM_NONE,                                         \
+        .genderRatio = MON_GENDERLESS,                                 \
+        .eggCycles = 120,                                              \
+        .friendship = 0,                                               \
+        .growthRate = GROWTH_SLOW,                                     \
+        .eggGroups = {EGG_GROUP_UNDISCOVERED, EGG_GROUP_UNDISCOVERED}, \
+        .abilities = {ABILITY_PRESSURE, ABILITY_NONE},                 \
+        .safariZoneFleeRate = 0,                                       \
+        .bodyColor = BODY_COLOR_RED,                                   \
+        .noFlip = TRUE,                                                \
+    }
+
 const struct SpeciesInfo gSpeciesInfo[] =
 {
     [SPECIES_NONE] = {0},
@@ -7314,9 +7345,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
     },
-    [SPECIES_OLD_UNOWN_B] = OLD_UNOWN_SPECIES_INFO,
-    [SPECIES_OLD_UNOWN_C] = OLD_UNOWN_SPECIES_INFO,
-    [SPECIES_OLD_UNOWN_D] = OLD_UNOWN_SPECIES_INFO,
+    [SPECIES_DEOXYS_ATTACK] = DEOXYS_SPECIES_INFO(50, 180, 20, 150, 180, 20),
+    [SPECIES_DEOXYS_DEFENSE] = DEOXYS_SPECIES_INFO(50, 70, 160, 90, 70, 160),
+    [SPECIES_DEOXYS_SPEED] = DEOXYS_SPECIES_INFO(50, 95, 90, 180, 95, 90),
     [SPECIES_OLD_UNOWN_E] = OLD_UNOWN_SPECIES_INFO,
     [SPECIES_OLD_UNOWN_F] = OLD_UNOWN_SPECIES_INFO,
     [SPECIES_OLD_UNOWN_G] = OLD_UNOWN_SPECIES_INFO,
@@ -11196,35 +11227,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
     },
-    [SPECIES_DEOXYS] =
-    {
-        .baseHP = 50,
-        .baseAttack = 150,
-        .baseDefense = 50,
-        .baseSpeed = 150,
-        .baseSpAttack = 150,
-        .baseSpDefense = 50,
-        .types = {TYPE_PSYCHIC, TYPE_PSYCHIC},
-        .catchRate = 3,
-        .expYield = 215,
-        .evYield_HP = 0,
-        .evYield_Attack = 1,
-        .evYield_Defense = 0,
-        .evYield_Speed = 1,
-        .evYield_SpAttack = 1,
-        .evYield_SpDefense = 0,
-        .itemCommon = ITEM_NONE,
-        .itemRare = ITEM_NONE,
-        .genderRatio = MON_GENDERLESS,
-        .eggCycles = 120,
-        .friendship = 0,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = {EGG_GROUP_UNDISCOVERED, EGG_GROUP_UNDISCOVERED},
-        .abilities = {ABILITY_PRESSURE, ABILITY_NONE},
-        .safariZoneFleeRate = 0,
-        .bodyColor = BODY_COLOR_RED,
-        .noFlip = TRUE,
-    },
+    [SPECIES_DEOXYS] = DEOXYS_SPECIES_INFO(50, 150, 50, 150, 150, 50),
     [SPECIES_CHIMECHO] =
     {
         .baseHP = 65,

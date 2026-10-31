@@ -1,12 +1,23 @@
 FarawayIsland_Interior_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, FarawayIsland_Interior_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, FarawayIsland_Interior_OnTransition
 	.byte 0
 
-@ Mew is only gone for good once it has been caught. Otherwise it is back on
-@ every visit, even after it fled.
+@ Follows the official legendary encounters (e.g. Articuno): Mew is gone for
+@ good once it is caught or knocked out, but returns after it flees.
+FarawayIsland_Interior_OnResume::
+	call_if_set FLAG_SYS_SPECIAL_WILD_BATTLE, FarawayIsland_Interior_EventScript_TryRemoveMew
+	end
+
+FarawayIsland_Interior_EventScript_TryRemoveMew::
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, EventScript_Return
+	removeobject VAR_LAST_TALKED
+	return
+
 FarawayIsland_Interior_OnTransition::
-	call_if_set FLAG_CAUGHT_MEW, FarawayIsland_Interior_EventScript_HideMew
-	call_if_unset FLAG_CAUGHT_MEW, FarawayIsland_Interior_EventScript_ShowMew
+	call_if_set FLAG_FOUGHT_MEW, FarawayIsland_Interior_EventScript_HideMew
+	call_if_unset FLAG_FOUGHT_MEW, FarawayIsland_Interior_EventScript_ShowMew
 	end
 
 FarawayIsland_Interior_EventScript_HideMew::
@@ -34,19 +45,19 @@ FarawayIsland_Interior_EventScript_Mew::
 	waitstate
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
 	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, FarawayIsland_Interior_EventScript_CaughtMew
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, FarawayIsland_Interior_EventScript_MewFled
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, FarawayIsland_Interior_EventScript_MewFled
-	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, FarawayIsland_Interior_EventScript_MewFled
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, FarawayIsland_Interior_EventScript_DefeatedMew
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, FarawayIsland_Interior_EventScript_RanFromMew
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, FarawayIsland_Interior_EventScript_RanFromMew
+	setflag FLAG_FOUGHT_MEW
 	release
 	end
 
-FarawayIsland_Interior_EventScript_CaughtMew::
-	setflag FLAG_CAUGHT_MEW
+FarawayIsland_Interior_EventScript_DefeatedMew::
+	setflag FLAG_FOUGHT_MEW
 	goto EventScript_RemoveStaticMon
 	end
 
-FarawayIsland_Interior_EventScript_MewFled::
+FarawayIsland_Interior_EventScript_RanFromMew::
 	setvar VAR_0x8004, SPECIES_MEW
 	goto EventScript_MonFlewAway
 	end

@@ -445,8 +445,9 @@
 #define ITEM_RUBY 373
 #define ITEM_SAPPHIRE 374
 #define ITEM_OLD_SEA_MAP 375
+#define ITEM_METEOR_SHARD 376 // Mod: changes Deoxys' forme
 
-#define ITEMS_COUNT 376
+#define ITEMS_COUNT 377
 
 #define ITEM_TO_BERRY(itemId)(((itemId - FIRST_BERRY_INDEX) + 1))
 #define MAIL_NONE 0xFF

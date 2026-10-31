@@ -359,6 +359,12 @@ PalletTown_ProfessorOaksLab_Text_OakIsAuthorityOnMons::
     .string "Many POKéMON TRAINERS hold him in\n"
     .string "high regard.$"
 
+PalletTown_ProfessorOaksLab_Text_RareMonOnRoute1::
+    .string "I heard a rare POKéMON has been\n"
+    .string "spotted in the grass on ROUTE 1.\p"
+    .string "It only shows up now and then.\n"
+    .string "Maybe you should go take a look!$"
+
 PalletTown_ProfessorOaksLab_Text_OakFavorToAskYouPlayer::
     .string "Ah, now this is excellent!\p"
     .string "{PLAYER}, I have another important\n"
