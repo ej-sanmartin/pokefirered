@@ -36,6 +36,10 @@ Debug_EventScript_Unlock::
 	setflag FLAG_WORLD_MAP_ONE_ISLAND
 	clearflag FLAG_GOT_MOM_POSTGAME_GIFT
 	setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 3
+	@ Cinnabar scene 4 (Bill's return trip done) is what makes the island
+	@ ferries offer Vermilion; the PC lock is normally cleared at Three Island.
+	setvar VAR_MAP_SCENE_CINNABAR_ISLAND, 4
+	clearflag FLAG_SYS_PC_STORAGE_DISABLED
 	setvar VAR_MAP_SCENE_VERMILION_CITY, 3
 	setvar VAR_VERMILION_CITY_TICKET_CHECK_TRIGGER, 1
 	additem ITEM_MASTER_BALL, 10
