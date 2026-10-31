@@ -14,6 +14,7 @@ import numpy as np
 from PIL import Image
 
 from concept_groups import C1, C2
+from fix_intro_face import fix_face
 from gbaquant import (kmeans_palette, mode_scale, quantize, save_indexed,
                       write_jasc)
 from spritelib import components, find_sprites, sort_grid
@@ -152,6 +153,7 @@ def build_oak():
   full[64] = BG
   im = Image.fromarray(idx, mode="P")
   im.putpalette(full.flatten().tolist())
+  fix_face(im)  # generated art has mismatched eyes
   out = os.path.join(G, "oak_speech/red/pic.png")
   im.save(out)
   write_jasc(np.concatenate([[BG], pal]).astype(int),

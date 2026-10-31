@@ -32,6 +32,7 @@ Debug_EventScript_Unlock::
 	setflag FLAG_BADGE07_GET
 	setflag FLAG_BADGE08_GET
 	setflag FLAG_WORLD_MAP_ONE_ISLAND
+	clearflag FLAG_GOT_MOM_POSTGAME_GIFT
 	setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 3
 	setvar VAR_MAP_SCENE_VERMILION_CITY, 3
 	setvar VAR_VERMILION_CITY_TICKET_CHECK_TRIGGER, 1
@@ -50,6 +51,14 @@ Debug_EventScript_CompleteDex::
 Debug_EventScript_GiveMons::
 	givemon SPECIES_KADABRA, 30
 	givemon SPECIES_ONIX, 30, ITEM_METAL_COAT
+	@ HM carriers. A partyIndex above PARTY_SIZE targets the last party mon.
+	givemon SPECIES_FARFETCHD, 40
+	setmonmove 7, 0, MOVE_CUT
+	setmonmove 7, 1, MOVE_FLY
+	givemon SPECIES_GYARADOS, 40
+	setmonmove 7, 0, MOVE_SURF
+	setmonmove 7, 1, MOVE_STRENGTH
+	setmonmove 7, 2, MOVE_WATERFALL
 	msgbox Debug_Text_Done
 	return
 
@@ -71,8 +80,8 @@ Debug_Text_Dex::
 	.string "DEBUG: Complete the KANTO POKéDEX?$"
 
 Debug_Text_Mons::
-	.string "DEBUG: Give KADABRA and ONIX\n"
-	.string "(METAL COAT)?$"
+	.string "DEBUG: Give test team?\n"
+	.string "(FARFETCH'D, GYARADOS, etc.)$"
 
 Debug_Text_WarpLab::
 	.string "DEBUG: Warp to PROF. OAK's LAB?$"

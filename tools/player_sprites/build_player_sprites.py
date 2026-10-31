@@ -3,6 +3,7 @@
 
 Run from anywhere:  python3 tools/player_sprites/build_player_sprites.py
 Writes the red_*.png sheets + player.pal / player_reflection.pal.
+Finishes with unify_heads (identical head per direction, matched eyes).
 Frame order follows pokefirered's sPicTable_Red* / object_event_anims.h.
 """
 import os
@@ -14,6 +15,7 @@ from concept_groups import group_scale, load_all
 from gbaquant import (idx_to_rgba, kmeans_palette, mode_scale, quantize,
                       save_indexed, write_jasc)
 from spritelib import place
+from unify_heads import run as unify_heads
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 PEOPLE = os.path.join(ROOT, "graphics/object_events/pics/people")
@@ -122,6 +124,7 @@ def main():
   save(np.concatenate(fcells, axis=1), pal, "red_fish.png")
 
   write_palettes(pal)
+  unify_heads()  # same head in every frame of a direction
 
 
 def save(rgba_sheet, pal, name):

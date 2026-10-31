@@ -47,14 +47,10 @@ PalletTown_PlayersHouse_1F_Text_MomYouAreChampion::
 
 PalletTown_PlayersHouse_1F_Text_ObtainedTheTickets::
     .string "{PLAYER} obtained the\n"
-    .string "MYSTIC TICKET, AURORA TICKET\l"
-    .string "and RAINBOW PASS!$"
-
-PalletTown_PlayersHouse_1F_Text_PokedexWasUpgraded::
-    .string "{PLAYER}'s POKéDEX was upgraded\n"
-    .string "to the NATIONAL DEX!$"
+    .string "MYSTIC TICKET and\n"
+    .string "AURORA TICKET!$"
 
 PalletTown_PlayersHouse_1F_Text_MomEnjoyTheIslands::
-    .string "Now every island is open to you.\n"
+    .string "Use them on the ferry at VERMILION.\n"
     .string "Have fun, but be safe!$"
 

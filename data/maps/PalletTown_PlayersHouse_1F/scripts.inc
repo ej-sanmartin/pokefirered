@@ -65,29 +65,20 @@ PalletTown_PlayersHouse_1F_EventScript_TVScreenFemale::
 	msgbox PalletTown_PlayersHouse_1F_Text_MovieOnTVGirlOnBrickRoad
 	return
 
-@ Mod: once the player is Champion (and has met Celio), Mom gives a one-time
-@ gift that unlocks the National Dex, all Sevii islands and the event tickets.
+@ Mod: once the player is Champion, Mom gives a one-time gift of the two event
+@ tickets (not obtainable in vanilla). The National Dex (Oak) and the Rainbow
+@ Pass (Celio) are left to their normal sources.
 PalletTown_PlayersHouse_1F_EventScript_MomChampion::
 	goto_if_set FLAG_GOT_MOM_POSTGAME_GIFT, PalletTown_PlayersHouse_1F_EventScript_MomHeal
-	goto_if_lt VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 3, PalletTown_PlayersHouse_1F_EventScript_MomHeal
 	msgbox PalletTown_PlayersHouse_1F_Text_MomYouAreChampion
 	call PalletTown_PlayersHouse_1F_EventScript_GiveMysticTicket
 	call PalletTown_PlayersHouse_1F_EventScript_GiveAuroraTicket
-	call_if_lt VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 5, PalletTown_PlayersHouse_1F_EventScript_GiveRainbowPass
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	playfanfare MUS_OBTAIN_KEY_ITEM
 	message PalletTown_PlayersHouse_1F_Text_ObtainedTheTickets
 	waitmessage
 	waitfanfare
 	call EventScript_RestorePrevTextColor
-	special EnableNationalPokedex
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	playfanfare MUS_OBTAIN_KEY_ITEM
-	message PalletTown_PlayersHouse_1F_Text_PokedexWasUpgraded
-	waitmessage
-	waitfanfare
-	call EventScript_RestorePrevTextColor
-	call_if_lt VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 6, PalletTown_PlayersHouse_1F_EventScript_FinishCelioQuest
 	setflag FLAG_GOT_MOM_POSTGAME_GIFT
 	msgbox PalletTown_PlayersHouse_1F_Text_MomEnjoyTheIslands
 	goto PalletTown_PlayersHouse_1F_EventScript_MomHeal
@@ -107,21 +98,4 @@ PalletTown_PlayersHouse_1F_EventScript_GiveAuroraTicket::
 	checkitem ITEM_AURORA_TICKET
 	goto_if_eq VAR_RESULT, TRUE, EventScript_Return
 	additem ITEM_AURORA_TICKET
-	return
-
-@ Same swap Celio does: Tri-Pass for Rainbow Pass, plus the extra map page.
-PalletTown_PlayersHouse_1F_EventScript_GiveRainbowPass::
-	removeitem ITEM_TRI_PASS
-	additem ITEM_RAINBOW_PASS
-	setflag FLAG_SYS_SEVII_MAP_4567
-	return
-
-@ Same state Celio's quest ends in (Ruby/Sapphire/Hoenn link skipped).
-PalletTown_PlayersHouse_1F_EventScript_FinishCelioQuest::
-	special SetPostgameFlags
-	setflag FLAG_SYS_CAN_LINK_WITH_RS
-	setflag FLAG_HIDE_CERULEAN_CAVE_GUARD
-	setflag FLAG_HIDE_LORELEI_IN_HER_HOUSE
-	special InitRoamer
-	setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 7
 	return
