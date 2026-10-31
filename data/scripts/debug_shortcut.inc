@@ -15,6 +15,8 @@ Debug_EventScript_Menu::
 	goto_if_eq VAR_RESULT, YES, Debug_EventScript_WarpLab
 	msgbox Debug_Text_WarpVermilion, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Debug_EventScript_WarpVermilion
+	msgbox Debug_Text_WarpMuseum, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Debug_EventScript_WarpMuseum
 	releaseall
 	end
 
@@ -115,6 +117,18 @@ Debug_EventScript_WarpVermilion::
 	waitstate
 	end
 
+@ Warps next to the Old Amber scientist in the Pewter Museum. If no Mt. Moon
+@ fossil was taken yet, pretends the DOME FOSSIL was (so the prize is the
+@ HELIX FOSSIL). The prize also needs the Champion flag (the Unlock option).
+Debug_EventScript_WarpMuseum::
+	goto_if_set FLAG_GOT_FOSSIL_FROM_MT_MOON, Debug_EventScript_WarpMuseumNow
+	setflag FLAG_GOT_FOSSIL_FROM_MT_MOON
+	setflag FLAG_GOT_DOME_FOSSIL
+Debug_EventScript_WarpMuseumNow::
+	warp MAP_PEWTER_CITY_MUSEUM_1F, 21, 8
+	waitstate
+	end
+
 Debug_Text_Unlock::
 	.string "DEBUG: Champion + badges + items\n"
 	.string "(100 ULTRA BALLS, etc.)?$"
@@ -143,6 +157,10 @@ Debug_Text_WarpLab::
 
 Debug_Text_WarpVermilion::
 	.string "DEBUG: Warp to the VERMILION pier?$"
+
+Debug_Text_WarpMuseum::
+	.string "DEBUG: Warp to the PEWTER MUSEUM?\n"
+	.string "(fossil prize test)$"
 
 Debug_Text_Done::
 	.string "Done.$"

@@ -1,3 +1,54 @@
+# This mod is for my nephew
+
+A personalized *Pokémon LeafGreen* built on the pokefirered decompilation.
+It keeps the original story and adds the following.
+
+## Personalization
+
+- Pallet Town is renamed **West Springfield**; the hero defaults to **Landon**
+  and the rival to **Tato**
+- Custom Red protagonist art (overworld, battle, trainer, region map) and a
+  custom title logo
+- **Nick** in the player's house, and **Boston**, the pettable husky pacing
+  around it (custom sprite)
+- Optional encouraging bonus dialogue from a dozen NPCs across Kanto and Sevii
+
+## Quality of life
+
+- Wild encounters mix FireRed and LeafGreen: 50% of the time a species from
+  the other version's table appears (the Pokédex area view counts both)
+- TMs are reusable, move tutors are repeatable, and running works indoors
+- Repel asks to re-use when one wears off
+- Pokémon Center evolve option: the Cable Club attendant evolves trade
+  evolutions without trading (Gen 2 targets need the National Dex)
+- Celadon Dept. Store sells evolution stones and trade items
+
+## Post-game (after the Elite Four)
+
+- Mom gives the Mystic and Aurora Tickets; Oak gives the National Dex and the
+  last starter Poké Ball; Celio gives the Rainbow Pass; all Sevii islands open
+- The rival's starter appears on Route 1 until caught (Oak's aide hints at it)
+- All three legendary beasts roam, and Teleport/Roar/Whirlwind no longer
+  deactivate roaming legendaries
+- Both Mt. Moon fossils are obtainable: take the leftover one in Mt. Moon, or
+  get it as a prize from the Old Amber scientist in the Pewter Museum
+- **Deoxys** has separate Normal/Attack/Defense/Speed forms (same in FireRed
+  and LeafGreen). The new **Meteor Shard** key item cycles its form, and one
+  is left on Birth Island after Deoxys is caught
+- **Faraway Island** and **Mew**: Professor Oak gives the Old Sea Map for a
+  complete Kanto Pokédex (150 without Mew, one Hitmon allowed), and the
+  Vermilion ferry then sails to Faraway Island. Mew plays hide-and-seek in
+  the grass and can flee. Ported from Emerald, including its music
+
+## Test build
+
+`make leafgreen DEBUG_SHORTCUT=1` builds a separate `pokeleafgreen_debug.gba`
+with a debug menu on the TV in the player's house: unlock everything, skip
+Celio's quest, complete the Pokédex, give a test team, and warp to Oak's Lab,
+the Vermilion pier, or the Pewter Museum. It is never part of the normal ROM.
+
+---
+
 # Pokémon FireRed and LeafGreen
 
 This is a decompilation of English Pokémon FireRed and LeafGreen.
