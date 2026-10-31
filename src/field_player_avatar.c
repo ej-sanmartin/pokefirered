@@ -3,6 +3,7 @@
 #include "bike.h"
 #include "event_data.h"
 #include "event_object_movement.h"
+#include "faraway_island.h"
 #include "fieldmap.h"
 #include "field_camera.h"
 #include "field_control_avatar.h"
@@ -496,6 +497,11 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         {
             PlayerFaceDirection(direction);
         }
+        else if (collision == COLLISION_OBJECT_EVENT
+              && IsPlayerCollidingWithFarawayIslandMew(direction))
+        {
+            PlayerNotOnBikeCollideWithFarawayIslandMew(direction);
+        }
         else if (collision != COLLISION_STOP_SURFING
               && collision != COLLISION_LEDGE_JUMP
               && collision != COLLISION_PUSHED_BOULDER
@@ -884,6 +890,12 @@ void PlayerOnBikeCollide(u8 direction)
 void PlayerNotOnBikeCollide(u8 direction)
 {
     PlayCollisionSoundIfNotFacingWarp(direction);
+    PlayerSetAnimId(GetWalkInPlaceSlowMovementAction(direction), 2);
+}
+
+// Mod: bumping into the spot Mew just left makes no collision sound.
+void PlayerNotOnBikeCollideWithFarawayIslandMew(u8 direction)
+{
     PlayerSetAnimId(GetWalkInPlaceSlowMovementAction(direction), 2);
 }
 

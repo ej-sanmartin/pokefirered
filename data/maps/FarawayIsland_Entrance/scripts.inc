@@ -1,7 +1,7 @@
-FarawayIsland_Harbor_MapScripts::
+FarawayIsland_Entrance_MapScripts::
 	.byte 0
 
-FarawayIsland_Harbor_EventScript_Sailor::
+FarawayIsland_Entrance_EventScript_Sailor::
 	lock
 	faceplayer
 	message Text_WhereDoYouWantToSail

@@ -70,6 +70,9 @@
 #define MULTICHOICE_JOIN_OR_LEAD                               63
 #define MULTICHOICE_TRAINER_TOWER_MODE                         64
 #define MULTICHOICE_SEVII_FARAWAY                              65
+#define MULTICHOICE_SEVII_FARAWAY_NAVEL                        66
+#define MULTICHOICE_SEVII_FARAWAY_BIRTH                        67
+#define MULTICHOICE_SEVII_FARAWAY_NAVEL_BIRTH                  68
 
 #define MULTICHOICE_NONE                                      255
 

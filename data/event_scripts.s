@@ -276,7 +276,7 @@ gStdScriptsEnd::
 	.include "data/maps/BirthIsland_Harbor/scripts.inc"
 	.include "data/maps/NavelRock_Harbor/scripts.inc"
 	.include "data/maps/FarawayIsland_Interior/scripts.inc"
-	.include "data/maps/FarawayIsland_Harbor/scripts.inc"
+	.include "data/maps/FarawayIsland_Entrance/scripts.inc"
 .ifdef DEBUG_SHORTCUT
 	.include "data/scripts/debug_shortcut.inc"
 .endif

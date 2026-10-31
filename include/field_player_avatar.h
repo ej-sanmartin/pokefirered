@@ -52,6 +52,7 @@ void PlayerRun(u8 direction);
 void PlayerRunSlow(u8 direction);
 void PlayerOnBikeCollide(u8 direction);
 void PlayerNotOnBikeCollide(u8 direction);
+void PlayerNotOnBikeCollideWithFarawayIslandMew(u8 direction);
 void PlayerFaceDirection(u8 direction);
 void PlayerFaceDirectionFast(u8 direction);
 void PlayerTurnInPlace(u8 direction);

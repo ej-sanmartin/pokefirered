@@ -458,6 +458,8 @@ gSpecials::
 	def_special CanSelectedMonTradeEvolve
 	def_special StartSelectedMonTradeEvolution
 	def_special HasKantoDexWithoutTrades
+	def_special SetMewAboveGrass
+	def_special DestroyMewEmergingGrassSprite
 .ifdef DEBUG_SHORTCUT
 	def_special DebugCompleteKantoDex
 .endif

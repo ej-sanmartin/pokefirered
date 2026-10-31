@@ -4410,6 +4410,18 @@
       "secondary_tileset": "gTileset_FarawayReal",
       "border_filepath": "data/layouts/FarawayReal/border.bin",
       "blockdata_filepath": "data/layouts/FarawayReal/map.bin"
+    },
+    {
+      "id": "LAYOUT_FARAWAY_ISLAND_ENTRANCE",
+      "name": "FarawayIslandEntrance_Layout",
+      "width": 34,
+      "height": 46,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_FarawayRealPrimary",
+      "secondary_tileset": "gTileset_FarawayReal",
+      "border_filepath": "data/layouts/FarawayIslandEntrance/border.bin",
+      "blockdata_filepath": "data/layouts/FarawayIslandEntrance/map.bin"
     }
   ]
 }
